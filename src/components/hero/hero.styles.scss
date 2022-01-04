@@ -1,0 +1,47 @@
+.hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .heroText {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+
+    h1 {
+      font-size: 75px;
+    }
+
+    p {
+      font-size: 18px;
+      max-width: 500px;
+      margin: 25px 0;
+    }
+
+    .heroButton {
+      border: none;
+      outline: none;
+      padding: 15px 25px;
+      border-radius: 6px;
+      max-width: 200px;
+      text-decoration: none;
+      text-align: center;
+      color: whitesmoke;
+      background-color: rgb(46, 15, 15);
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+
+  .heroImage {
+    width: 50%;
+    display: flex;
+    justify-content: flex-end;
+
+    img {
+      width: 100%;
+    }
+  }
+}

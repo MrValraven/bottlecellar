@@ -1,0 +1,11 @@
+.default-button {
+  border: none;
+  outline: none;
+  padding: 15px 25px;
+  border-radius: 6px;
+  max-width: 250px;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
