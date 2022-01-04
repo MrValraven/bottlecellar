@@ -14,7 +14,7 @@ const Hero = () => (
         <br />
         All in one single platform.
       </p>
-      <Link className="heroButton" to="/cellar">
+      <Link className="heroButton" to="user/cellar">
         My Cellar
       </Link>
     </div>
