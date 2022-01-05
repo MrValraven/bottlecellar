@@ -12,6 +12,7 @@ const CellarOverview = () => {
   const cellarItems = useSelector((state) => state.cellar.cellarItems);
 
   const toggleModal = () => {
+    console.log(cellarItems);
     setShowAddBottleModal(!showAddBottleModal);
     const body = document.querySelector("body");
     if (setShowAddBottleModal) {
@@ -45,7 +46,7 @@ const CellarOverview = () => {
           Bottle1
         </p>
         {cellarItems.map((item) => (
-          <CellarItemListView key={item.id} {...item} />
+          <CellarItemListView key={item.id} item={item} />
         ))}
       </div>
     </div>
