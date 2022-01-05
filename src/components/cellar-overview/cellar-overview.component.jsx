@@ -7,6 +7,7 @@ import AddBottleModal from "../add-bottle-modal/add-bottle-modal.component";
 
 const CellarOverview = () => {
   const [showAddBottleModal, setShowAddBottleModal] = useState(false);
+
   const cellarItems = useSelector((state) => state.cellar.cellarItems);
 
   const toggleModal = () => {
@@ -41,7 +42,7 @@ const CellarOverview = () => {
       <div className="cellar-container">
         <p onClick={toggleModal}>Bottle1</p>
         {cellarItems.map((item) => (
-          <p>{item.name}</p>
+          <p key={item.id}>{item.name}</p>
         ))}
       </div>
     </div>

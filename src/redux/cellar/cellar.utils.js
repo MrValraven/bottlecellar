@@ -1,14 +1,20 @@
+import { v4 as uuidv4 } from "uuid";
+
 export const addItemToCellar = (cellarItems, itemToAdd) => {
   const isItemAlreadyInCellar = cellarItems.find(
-    (item) => item.id === itemToAdd.id
+    (item) =>
+      item.name === itemToAdd.name &&
+      item.brand === itemToAdd.brand &&
+      item.year === itemToAdd.year
   );
 
   if (isItemAlreadyInCellar) {
     //Throw erro porque ja existe
     console.log("item already exists");
+    return cellarItems;
   }
 
-  return [...cellarItems, itemToAdd];
+  return [...cellarItems, { ...itemToAdd, id: uuidv4() }];
 };
 
 export const removeItemFromCellar = (cellarItems, itemToRemove) => {

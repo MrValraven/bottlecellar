@@ -12,7 +12,6 @@ const AddBottleModal = ({ toggleModal }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("submited");
     dispatch(addItem(formData));
     toggleModal();
   };
