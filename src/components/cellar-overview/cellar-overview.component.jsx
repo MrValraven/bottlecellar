@@ -2,22 +2,28 @@ import React, { useState } from "react";
 
 import "./cellar-overview.styles.scss";
 import DefaultButton from "../default-button/default-button.component";
+import AddBottleModal from "../add-bottle-modal/add-bottle-modal.component";
 
 const CellarOverview = () => {
   const [showAddBottleModal, setShowAddBottleModal] = useState(false);
 
+  const toggleModal = () => {
+    console.log("toggle");
+    setShowAddBottleModal(!showAddBottleModal);
+  };
+
   return (
     <div className="cellar-overview">
-      {showAddBottleModal ? <p>toggled!</p> : null}
+      {showAddBottleModal ? <AddBottleModal toggleModal={toggleModal} /> : null}
       <div className="cellar-header">
         <h1 className="cellar-title">My cellar</h1>
         <DefaultButton
           buttonText="ADD NEW BOTTLE"
-          onClick={() => setShowAddBottleModal(!showAddBottleModal)}
+          onClick={toggleModal}
         ></DefaultButton>
       </div>
       <div className="cellar-filters">
-        <input type="text" />
+        <input type="text" placeholder="Search by name, brand, year..." />
         <select name="filterBy" id="filterBy">
           <option value="name">Name</option>
           <option value="brand">Brand</option>
@@ -26,9 +32,7 @@ const CellarOverview = () => {
         </select>
       </div>
       <div className="cellar-container">
-        <p onClick={() => setShowAddBottleModal(!showAddBottleModal)}>
-          Bottle1
-        </p>
+        <p onClick={toggleModal}>Bottle1</p>
         <p>Bottle2</p>
         <p>Bottle3</p>
         <p>Bottle4</p>
