@@ -22,25 +22,69 @@ const CellarItemPage = ({ match }) => {
 
   return (
     <div className="cellar-item-page">
-      <img src={defaultWineImage} alt="" />
-      <div className="cellar-item-information">
-        <h1>{name}</h1>
-        <h2>
-          {brand}, {year}
-        </h2>
-        <p className="rating">{"⭐".repeat(parseInt(rating))}</p>
-        <p className="preco">10.49€</p>
-        <p className="descricao">
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Minus
-          doloremque et ad dolore cupiditate officiis unde voluptas velit
-          assumenda reprehenderit.
+      <div className="cellar-item-main">
+        <img src={defaultWineImage} alt="" />
+        <div className="cellar-item-information">
+          <h1>{name}</h1>
+          <h2>
+            {brand}, {year}
+          </h2>
+          <p className="rating">{"⭐".repeat(parseInt(rating))}</p>
+          <p className="preco">10.49€</p>
+          <p className="descricao">
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Minus
+            doloremque et ad dolore cupiditate officiis unde voluptas velit
+            assumenda reprehenderit.
+          </p>
+          <p className="stock">
+            Stock: <span>20</span>
+            <i className="fas fa-plus"></i>
+            <i className="fas fa-minus"></i>
+          </p>
+          <div className="button-container">
+            <DefaultButton buttonText="Edit Bottle" iconClass="far fa-edit" />
+            <DefaultButton
+              buttonText="Delete Bottle"
+              iconClass="far fa-trash-alt"
+            ></DefaultButton>
+          </div>
+        </div>
+      </div>
+      <h1 className="notes-title">Notes:</h1>
+      <div className="notes-container">
+        <p>
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laborum
+          nobis, itaque saepe voluptatum cupiditate eveniet rem ex error
+          molestiae, laudantium quae id ut magnam provident atque doloremque
+          repudiandae explicabo vitae!
         </p>
-        <p className="stock">
-          Em stock: <span>20</span>
+        <div className="actions-container">
+          <i className="far fa-edit"></i>
+          <i className="far fa-trash-alt"></i>
+        </div>
+      </div>
+      <div className="notes-container">
+        <p>
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laborum
+          nobis, itaque saepe voluptatum cupiditate eveniet rem ex error
+          molestiae, laudantium quae id ut magnam provident atque doloremque
+          repudiandae explicabo vitae!
         </p>
-        <div className="button-container">
-          <DefaultButton buttonText="Edit Bottle" />
-          <DefaultButton buttonText="Delete Bottle" />
+        <div className="actions-container">
+          <i className="far fa-edit"></i>
+          <i className="far fa-trash-alt"></i>
+        </div>
+      </div>
+      <div className="notes-container">
+        <p>
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laborum
+          nobis, itaque saepe voluptatum cupiditate eveniet rem ex error
+          molestiae, laudantium quae id ut magnam provident atque doloremque
+          repudiandae explicabo vitae!
+        </p>
+        <div className="actions-container">
+          <i className="far fa-edit"></i>
+          <i className="far fa-trash-alt"></i>
         </div>
       </div>
     </div>

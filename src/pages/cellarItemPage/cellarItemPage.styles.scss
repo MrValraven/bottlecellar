@@ -1,53 +1,80 @@
 .cellar-item-page {
   display: flex;
+  flex-direction: column;
 
-  img {
-    max-width: 1200px;
-    width: 650px;
-  }
-
-  .cellar-item-information {
+  .cellar-item-main {
     display: flex;
-    flex-direction: column;
-    max-width: 600px;
-    padding-left: 50px;
 
-    h1 {
-      font-size: 50px;
+    img {
+      max-width: 1200px;
+      width: 650px;
     }
 
-    h2 {
-      font-size: 20px;
-      opacity: 0.7;
-      font-weight: 400;
-    }
+    .cellar-item-information {
+      display: flex;
+      flex-direction: column;
+      max-width: 600px;
+      padding-left: 50px;
 
-    .rating {
-      margin-top: 10px;
-    }
+      h1 {
+        font-size: 50px;
+      }
 
-    .descricao {
-      font-size: 18px;
-      margin-top: 25px;
-    }
+      h2 {
+        font-size: 20px;
+        opacity: 0.7;
+        font-weight: 400;
+      }
 
-    .stock,
-    .preco {
-      margin-top: 25px;
-      font-size: 25px;
-    }
+      .rating {
+        margin-top: 10px;
+      }
 
-    .button-container {
-      margin-top: 25px;
+      .descricao {
+        font-size: 18px;
+        margin-top: 25px;
+      }
 
-      button {
-        text-transform: uppercase;
-        font-size: 16px;
+      .stock,
+      .preco {
+        margin-top: 25px;
+        font-size: 25px;
 
-        &:first-child {
-          margin-right: 25px;
+        .fas {
+          padding: 3px 5px;
+          border: 1px solid black;
+          border-radius: 50%;
+          margin-left: 10px;
+
+          &:hover {
+            cursor: pointer;
+          }
+        }
+      }
+
+      .button-container {
+        margin-top: 25px;
+
+        button {
+          text-transform: uppercase;
+          font-size: 16px;
+
+          &:first-child {
+            margin-right: 25px;
+          }
         }
       }
     }
+  }
+
+  .notes-title {
+    margin-top: 25px;
+  }
+
+  .notes-container {
+    margin-top: 20px;
+    padding: 20px 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
   }
 }
