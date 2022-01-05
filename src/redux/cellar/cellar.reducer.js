@@ -1,7 +1,7 @@
-import CellarActionTypes from "./cellar.actions";
+import CellarActionTypes from "./cellar.types";
 import { addItemToCellar, removeItemFromCellar } from "./cellar.utils";
 
-const INITIAL_STATE = {
+export const INITIAL_STATE = {
   cellarItems: [],
 };
 
@@ -10,7 +10,7 @@ const cellarReducer = (state = INITIAL_STATE, action) => {
     case CellarActionTypes.ADD_ITEM:
       return {
         ...state,
-        cellarItems: addItemToCellar(state.cellarItems, action.paylad),
+        cellarItems: addItemToCellar(state.cellarItems, action.payload),
       };
     case CellarActionTypes.REMOVE_ITEM:
       return {

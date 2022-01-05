@@ -1,4 +1,4 @@
-const addItemToCellar = (cellarItems, itemToAdd) => {
+export const addItemToCellar = (cellarItems, itemToAdd) => {
   const isItemAlreadyInCellar = cellarItems.find(
     (item) => item.id === itemToAdd.id
   );
@@ -11,7 +11,7 @@ const addItemToCellar = (cellarItems, itemToAdd) => {
   return [...cellarItems, itemToAdd];
 };
 
-const removeItemFromCellar = (cellarItems, itemToRemove) => {
+export const removeItemFromCellar = (cellarItems, itemToRemove) => {
   const isItemAlreadyInCellar = cellarItems.find(
     (item) => item.id === itemToRemove.id
   );
