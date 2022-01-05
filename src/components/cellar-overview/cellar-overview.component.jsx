@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import "./cellar-overview.styles.scss";
 import DefaultButton from "../default-button/default-button.component";
 import AddBottleModal from "../add-bottle-modal/add-bottle-modal.component";
+import CellarItemListView from "../cellar-item-list-view/cellar-item-list-view.component";
 
 const CellarOverview = () => {
   const [showAddBottleModal, setShowAddBottleModal] = useState(false);
@@ -40,9 +41,11 @@ const CellarOverview = () => {
         </select>
       </div>
       <div className="cellar-container">
-        <p onClick={toggleModal}>Bottle1</p>
+        <p className="toggle" onClick={toggleModal}>
+          Bottle1
+        </p>
         {cellarItems.map((item) => (
-          <p key={item.id}>{item.name}</p>
+          <CellarItemListView key={item.id} {...item} />
         ))}
       </div>
     </div>
