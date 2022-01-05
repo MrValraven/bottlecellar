@@ -22,6 +22,19 @@ const CellarOverview = () => {
     }
   };
 
+  const [searchInput, setSearchInput] = useState("");
+
+  const handleChange = (e) => {
+    setSearchInput(e.target.value);
+  };
+
+  const filteredCellarItems = cellarItems.filter(
+    (cellarItem) =>
+      cellarItem.name.toLowerCase().includes(searchInput.toLowerCase()) ||
+      cellarItem.brand.toLowerCase().includes(searchInput.toLowerCase()) ||
+      cellarItem.year.includes(searchInput)
+  );
+
   return (
     <div className="cellar-overview">
       {showAddBottleModal ? <AddBottleModal toggleModal={toggleModal} /> : null}
@@ -33,7 +46,12 @@ const CellarOverview = () => {
         ></DefaultButton>
       </div>
       <div className="cellar-filters">
-        <input type="text" placeholder="Search by name, brand, year..." />
+        <input
+          type="text"
+          placeholder="Search by name, brand, year..."
+          value={searchInput}
+          onChange={handleChange}
+        />
         <select name="filterBy" id="filterBy">
           <option value="name">Name</option>
           <option value="brand">Brand</option>
@@ -45,7 +63,7 @@ const CellarOverview = () => {
         <p className="toggle" onClick={toggleModal}>
           Bottle1
         </p>
-        {cellarItems.map((item) => (
+        {filteredCellarItems.map((item) => (
           <CellarItemListView key={item.id} item={item} />
         ))}
       </div>
