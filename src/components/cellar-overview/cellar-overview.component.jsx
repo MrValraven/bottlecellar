@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 
 import "./cellar-overview.styles.scss";
@@ -6,21 +6,24 @@ import DefaultButton from "../default-button/default-button.component";
 import AddBottleModal from "../add-bottle-modal/add-bottle-modal.component";
 import CellarItemListView from "../cellar-item-list-view/cellar-item-list-view.component";
 
+const body = document.querySelector("body");
+
 const CellarOverview = () => {
   const [showAddBottleModal, setShowAddBottleModal] = useState(false);
 
   const cellarItems = useSelector((state) => state.cellar.cellarItems);
 
   const toggleModal = () => {
-    console.log(cellarItems);
     setShowAddBottleModal(!showAddBottleModal);
-    const body = document.querySelector("body");
-    if (setShowAddBottleModal) {
+  };
+
+  useEffect(() => {
+    if (showAddBottleModal) {
       body.classList.add("modalIsToggled");
     } else {
       body.classList.remove("modalIsToggled");
     }
-  };
+  }, [showAddBottleModal]);
 
   const [searchInput, setSearchInput] = useState("");
 

@@ -6,7 +6,7 @@ import defaultWineImage from "../../assets/defaultWine.jpg";
 import logo from "../../assets/wine.svg";
 
 const CellarItemListView = ({ item, history, match }) => {
-  const { name, brand, year, rating } = item;
+  const { name, brand, year, price, quantity, notes, rating } = item;
   const goToItemPage = () => {
     const cellarItemName = (name + " " + year)
       .replaceAll(" ", "-")
@@ -19,17 +19,21 @@ const CellarItemListView = ({ item, history, match }) => {
       <img src={defaultWineImage} alt="" />
       <div className="information">
         <div className="generalInfo">
-          <h1>{name}</h1>
-          <p>
-            {brand}, {year}
-          </p>
+          <div className="nameAndBrand">
+            <h1>{name}</h1>
+            <p>
+              {brand}, {year}
+            </p>
+          </div>
+          <p>This item has {notes.length} notes</p>
         </div>
         <div className="ratings">
+          <p>{price}€</p>
           <p>{"⭐".repeat(parseInt(rating))}</p>
         </div>
       </div>
       <div className="bottlesAvailable">
-        <span>0</span>
+        <span>{quantity}</span>
         <img src={logo} alt="" />
       </div>
     </div>

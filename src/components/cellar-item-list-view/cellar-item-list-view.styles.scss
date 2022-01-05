@@ -19,10 +19,17 @@
     width: 100%;
     padding: 10px 15px 20px 15px;
 
+    .generalInfo {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
     .ratings {
       display: flex;
       flex-direction: column;
-      justify-content: flex-end;
+      justify-content: space-between;
+      align-items: flex-end;
     }
   }
 

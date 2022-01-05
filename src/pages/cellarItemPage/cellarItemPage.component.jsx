@@ -9,20 +9,23 @@ import defaultWineImage from "../../assets/defaultWine.jpg";
 import DefaultButton from "../../components/default-button/default-button.component";
 import EditBottleModal from "../../components/edit-bottle-modal/edit-bottle-modal.component";
 
+const body = document.querySelector("body");
+
 const CellarItemPage = ({ match, history }) => {
   const [toggleEditModal, setToggleEditModal] = useState(false);
   const dispatch = useDispatch();
-  console.log("dit", toggleEditModal);
 
   const toggleModal = () => {
     setToggleEditModal(!toggleEditModal);
-    const body = document.querySelector("body");
-    if (setToggleEditModal) {
+  };
+
+  useEffect(() => {
+    if (toggleEditModal) {
       body.classList.add("modalIsToggled");
     } else {
       body.classList.remove("modalIsToggled");
     }
-  };
+  }, [toggleEditModal]);
 
   const currentCellarItem = useSelector((state) =>
     state.cellar.cellarItems.find(
