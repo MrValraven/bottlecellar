@@ -3,15 +3,22 @@
   outline: none;
   padding: 15px 25px;
   border-radius: 6px;
+  background-color: whitesmoke;
+  color: black;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgb(202, 202, 202);
   max-width: 250px;
   max-height: 50px;
   font-family: "Roboto", sans-serif;
+  transition: all 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
 
   i {
     margin-left: 10px;
   }
 
   &:hover {
+    background-color: #0f0f0f;
+    color: #fbfaf5;
     cursor: pointer;
   }
 }

@@ -44,7 +44,6 @@ const CellarItemPage = ({ match, history }) => {
 
   const decrementQuantity = () => {
     if (quantity <= 0) {
-      console.log("tret");
       return;
     }
 
@@ -74,12 +73,13 @@ const CellarItemPage = ({ match, history }) => {
             assumenda reprehenderit.
           </p>
           <p className="quantity">
-            Quantity: <span>{quantity}</span>
+            Quantity:
+            <i className="fas fa-minus" onClick={decrementQuantity}></i>
+            <span>{quantity}</span>
             <i
               className="fas fa-plus"
               onClick={() => dispatch(incrementItemQuantity(currentCellarItem))}
             ></i>
-            <i className="fas fa-minus" onClick={decrementQuantity}></i>
           </p>
           <div className="button-container">
             <DefaultButton
@@ -98,7 +98,13 @@ const CellarItemPage = ({ match, history }) => {
           </div>
         </div>
       </div>
-      <h1 className="notes-title">Notes:</h1>
+      <div className="notes-header">
+        <h1 className="notes-title">Notes</h1>
+        <DefaultButton
+          buttonText="Add new note"
+          iconClass="far fa-sticky-note"
+        />
+      </div>
       <div className="notes-container">
         <p>
           Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laborum
