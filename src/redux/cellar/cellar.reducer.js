@@ -1,5 +1,9 @@
 import CellarActionTypes from "./cellar.types";
-import { addItemToCellar, removeItemFromCellar } from "./cellar.utils";
+import {
+  addItemToCellar,
+  removeItemFromCellar,
+  editItemFromCellar,
+} from "./cellar.utils";
 
 const INITIAL_STATE = {
   cellarItems: [],
@@ -17,6 +21,13 @@ const cellarReducer = (state = INITIAL_STATE, action) => {
       };
     case CellarActionTypes.REMOVE_ITEM:
       cellarItems = removeItemFromCellar(state.cellarItems, action.payload);
+      localStorage.setItem("cellarItems", JSON.stringify(cellarItems));
+      return {
+        ...state,
+        cellarItems: cellarItems,
+      };
+    case CellarActionTypes.EDIT_ITEM:
+      cellarItems = editItemFromCellar(state.cellarItems, action.payload);
       localStorage.setItem("cellarItems", JSON.stringify(cellarItems));
       return {
         ...state,
