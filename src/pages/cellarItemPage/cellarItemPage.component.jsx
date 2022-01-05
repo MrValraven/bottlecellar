@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { removeItem } from "../../redux/cellar/cellar.actions";
 import { withRouter } from "react-router-dom";
@@ -30,7 +30,7 @@ const CellarItemPage = ({ match, history }) => {
   const currentCellarItem = useSelector((state) =>
     state.cellar.cellarItems.find(
       (cellarItem) =>
-        (cellarItem.name + " " + cellarItem.year)
+        (cellarItem.name + " " + cellarItem.brand + " " + cellarItem.year)
           .toLowerCase()
           .replaceAll(" ", "-") === match.params.name
     )

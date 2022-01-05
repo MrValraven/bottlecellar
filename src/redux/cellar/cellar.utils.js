@@ -29,7 +29,8 @@ export const editItemFromCellar = (cellarItems, itemToEdit) => {
             brand: itemToEdit.brand,
             year: itemToEdit.year,
             rating: itemToEdit.rating,
-            //Add price, notes , quantity
+            price: itemToEdit.price,
+            quantity: itemToEdit.quantity,
           }
         : cellarItem
     );

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { withRouter } from "react-router-dom";
 
 import { editItem } from "../../redux/cellar/cellar.actions";
 import { useDispatch } from "react-redux";
@@ -7,14 +8,31 @@ import "./Edit-bottle-modal.styles.scss";
 import logo from "../../assets/wine.svg";
 import DefaultButton from "../default-button/default-button.component";
 
-const EditBottleModal = ({ toggleModal, cellarItem }) => {
+const EditBottleModal = ({ toggleModal, cellarItem, history }) => {
   const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("editz:", { ...cellarItem, formData });
-    dispatch(editItem({ ...cellarItem, ...formData }));
+    dispatch(
+      editItem({
+        ...cellarItem,
+        ...formData,
+        year: Math.abs(formData.year),
+        price: Math.abs(formData.price),
+        quantity: Math.abs(formData.quantity),
+      })
+    );
     toggleModal();
+    const sanitizeURL = (
+      formData.name +
+      " " +
+      formData.brand +
+      " " +
+      formData.year
+    )
+      .toLowerCase()
+      .replaceAll(" ", "-");
+    history.push(`/user/cellar/${sanitizeURL}`);
   };
 
   const handleChange = (e) => {
@@ -99,4 +117,4 @@ const EditBottleModal = ({ toggleModal, cellarItem }) => {
   );
 };
 
-export default EditBottleModal;
+export default withRouter(EditBottleModal);

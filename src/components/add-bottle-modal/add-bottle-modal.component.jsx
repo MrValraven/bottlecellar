@@ -12,7 +12,14 @@ const AddBottleModal = ({ toggleModal }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(addItem(formData));
+    dispatch(
+      addItem({
+        ...formData,
+        year: Math.abs(formData.year),
+        price: Math.abs(formData.price),
+        quantity: Math.abs(formData.quantity),
+      })
+    );
     toggleModal();
   };
 
