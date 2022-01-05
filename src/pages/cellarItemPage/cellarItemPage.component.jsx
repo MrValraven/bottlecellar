@@ -7,11 +7,22 @@ import "./cellarItemPage.styles.scss";
 
 import defaultWineImage from "../../assets/defaultWine.jpg";
 import DefaultButton from "../../components/default-button/default-button.component";
+import EditBottleModal from "../../components/edit-bottle-modal/edit-bottle-modal.component";
 
 const CellarItemPage = ({ match, history }) => {
   const [toggleEditModal, setToggleEditModal] = useState(false);
   const dispatch = useDispatch();
   console.log("dit", toggleEditModal);
+
+  const toggleModal = () => {
+    setToggleEditModal(!toggleEditModal);
+    const body = document.querySelector("body");
+    if (setToggleEditModal) {
+      body.classList.add("modalIsToggled");
+    } else {
+      body.classList.remove("modalIsToggled");
+    }
+  };
 
   const currentCellarItem = useSelector((state) =>
     state.cellar.cellarItems.find(
@@ -22,10 +33,16 @@ const CellarItemPage = ({ match, history }) => {
     )
   );
 
-  const { name, brand, year, rating } = currentCellarItem;
+  const { name, brand, year, price, quantity, rating } = currentCellarItem;
 
   return (
     <div className="cellar-item-page">
+      {toggleEditModal ? (
+        <EditBottleModal
+          toggleModal={toggleModal}
+          cellarItem={currentCellarItem}
+        />
+      ) : null}
       <div className="cellar-item-main">
         <img src={defaultWineImage} alt="" />
         <div className="cellar-item-information">
@@ -34,17 +51,14 @@ const CellarItemPage = ({ match, history }) => {
             {brand}, {year}
           </h2>
           <p className="rating">{"⭐".repeat(parseInt(rating))}</p>
-          <p className="preco">10.49€</p>
+          <p className="preco">{price}€</p>
           <p className="descricao">
             Lorem ipsum, dolor sit amet consectetur adipisicing elit. Minus
             doloremque et ad dolore cupiditate officiis unde voluptas velit
             assumenda reprehenderit.
           </p>
-          <p
-            className="stock"
-            onClick={() => setToggleEditModal(!toggleEditModal)}
-          >
-            Stock: <span>20</span>
+          <p className="stock" onClick={toggleModal}>
+            Stock: <span>{quantity}</span>
             <i className="fas fa-plus"></i>
             <i className="fas fa-minus"></i>
           </p>

@@ -1,18 +1,19 @@
 import React, { useState } from "react";
 
-import { addItem } from "../../redux/cellar/cellar.actions";
+import { editItem } from "../../redux/cellar/cellar.actions";
 import { useDispatch } from "react-redux";
 
-import "./add-bottle-modal.styles.scss";
+import "./Edit-bottle-modal.styles.scss";
 import logo from "../../assets/wine.svg";
 import DefaultButton from "../default-button/default-button.component";
 
-const AddBottleModal = ({ toggleModal }) => {
+const EditBottleModal = ({ toggleModal, cellarItem }) => {
   const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(addItem(formData));
+    console.log("editz:", { ...cellarItem, formData });
+    dispatch(editItem({ ...cellarItem, ...formData }));
     toggleModal();
   };
 
@@ -24,24 +25,24 @@ const AddBottleModal = ({ toggleModal }) => {
   };
 
   const [formData, setformData] = useState({
-    name: "",
-    brand: "",
-    year: "",
-    price: "",
-    quantity: "",
-    rating: "",
-    notes: [],
+    name: cellarItem.name,
+    brand: cellarItem.brand,
+    year: cellarItem.year,
+    price: cellarItem.price,
+    quantity: cellarItem.quantity,
+    rating: cellarItem.rating,
   });
   return (
-    <div className="add-bottle-modal-container">
-      <div className="add-bottle-modal">
-        <h1>Add new bottle</h1>
+    <div className="edit-bottle-modal-container">
+      <div className="edit-bottle-modal">
+        <h1>Edit bottle</h1>
         <img src={logo} alt="logo" onClick={toggleModal} />
         <form onSubmit={handleSubmit}>
           <label name="name">Name *</label>
           <input
             type="text"
             name="name"
+            value={formData.name}
             onChange={(e) => handleChange(e)}
             required
           />
@@ -49,6 +50,7 @@ const AddBottleModal = ({ toggleModal }) => {
           <input
             name="brand"
             type="text"
+            value={formData.brand}
             onChange={(e) => handleChange(e)}
             required
           />
@@ -56,13 +58,15 @@ const AddBottleModal = ({ toggleModal }) => {
           <input
             type="number"
             name="year"
+            value={formData.year}
             onChange={(e) => handleChange(e)}
             required
           />
           <label name="price">Price *</label>
           <input
-            type="text"
+            type="number"
             name="price"
+            value={formData.price}
             onChange={(e) => handleChange(e)}
             required
           />
@@ -70,6 +74,7 @@ const AddBottleModal = ({ toggleModal }) => {
           <input
             type="number"
             name="quantity"
+            value={formData.quantity}
             onChange={(e) => handleChange(e)}
             required
           />
@@ -77,6 +82,7 @@ const AddBottleModal = ({ toggleModal }) => {
           <select
             name="rating"
             id="rating"
+            value={formData.rating}
             onChange={(e) => handleChange(e, name)}
             required
           >
@@ -86,11 +92,11 @@ const AddBottleModal = ({ toggleModal }) => {
             <option value="4">4</option>
             <option value="5">5</option>
           </select>
-          <DefaultButton buttonText="Add bottle" />
+          <DefaultButton buttonText="Edit bottle" />
         </form>
       </div>
     </div>
   );
 };
 
-export default AddBottleModal;
+export default EditBottleModal;
