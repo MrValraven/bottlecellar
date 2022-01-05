@@ -3,6 +3,8 @@ import {
   addItemToCellar,
   removeItemFromCellar,
   editItemFromCellar,
+  incrementItemQuantity,
+  decrementItemQuantity,
 } from "./cellar.utils";
 
 const INITIAL_STATE = {
@@ -19,6 +21,7 @@ const cellarReducer = (state = INITIAL_STATE, action) => {
         ...state,
         cellarItems: cellarItems,
       };
+
     case CellarActionTypes.REMOVE_ITEM:
       cellarItems = removeItemFromCellar(state.cellarItems, action.payload);
       localStorage.setItem("cellarItems", JSON.stringify(cellarItems));
@@ -26,8 +29,23 @@ const cellarReducer = (state = INITIAL_STATE, action) => {
         ...state,
         cellarItems: cellarItems,
       };
+
     case CellarActionTypes.EDIT_ITEM:
       cellarItems = editItemFromCellar(state.cellarItems, action.payload);
+      localStorage.setItem("cellarItems", JSON.stringify(cellarItems));
+      return {
+        ...state,
+        cellarItems: cellarItems,
+      };
+    case CellarActionTypes.INCREMENT_ITEM_QUANTITY:
+      cellarItems = incrementItemQuantity(state.cellarItems, action.payload);
+      localStorage.setItem("cellarItems", JSON.stringify(cellarItems));
+      return {
+        ...state,
+        cellarItems: cellarItems,
+      };
+    case CellarActionTypes.DECREMENT_ITEM_QUANTITY:
+      cellarItems = decrementItemQuantity(state.cellarItems, action.payload);
       localStorage.setItem("cellarItems", JSON.stringify(cellarItems));
       return {
         ...state,

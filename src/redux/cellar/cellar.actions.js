@@ -12,6 +12,14 @@ export const editItem = (item) => ({
   type: CellarActionTypes.EDIT_ITEM,
   payload: item,
 });
+export const incrementItemQuantity = (item) => ({
+  type: CellarActionTypes.EDIT_ITEM,
+  payload: item,
+});
+export const decrementItemQuantity = (item) => ({
+  type: CellarActionTypes.EDIT_ITEM,
+  payload: item,
+});
 export const setCellarItems = (cellarItems) => ({
   type: CellarActionTypes.SET_CELLAR_ITEMS,
   payload: cellarItems,

@@ -29,7 +29,7 @@ export const editItemFromCellar = (cellarItems, itemToEdit) => {
             brand: itemToEdit.brand,
             year: itemToEdit.year,
             rating: itemToEdit.rating,
-            //Add price and notes
+            //Add price, notes , quantity
           }
         : cellarItem
     );
@@ -48,4 +48,41 @@ export const removeItemFromCellar = (cellarItems, itemToRemove) => {
   }
 
   console.log("error, item not found");
+};
+
+export const incrementItemQuantity = (cellarItems, itemToModifyQuantity) => {
+  const isItemInCellar = cellarItems.find(
+    (item) => item.id === itemToModifyQuantity.id
+  );
+
+  if (isItemInCellar) {
+    return cellarItems.map((cellarItem) =>
+      cellarItem.id === itemToModifyQuantity.id
+        ? {
+            ...cellarItem,
+            quantity: itemToModifyQuantity.quantity + 1,
+          }
+        : cellarItem
+    );
+  }
+
+  console.log("Item doesn't exist");
+};
+export const decrementItemQuantity = (cellarItems, itemToModifyQuantity) => {
+  const isItemInCellar = cellarItems.find(
+    (item) => item.id === itemToModifyQuantity.id
+  );
+
+  if (isItemInCellar) {
+    return cellarItems.map((cellarItem) =>
+      cellarItem.id === itemToModifyQuantity.id
+        ? {
+            ...cellarItem,
+            quantity: itemToModifyQuantity.quantity - 1,
+          }
+        : cellarItem
+    );
+  }
+
+  console.log("Item doesn't exist");
 };
