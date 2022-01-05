@@ -10,6 +10,9 @@
   max-width: 250px;
   max-height: 50px;
   font-family: "Roboto", sans-serif;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 16px;
   transition: all 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
 
   i {
@@ -19,6 +22,7 @@
   &:hover {
     background-color: #0f0f0f;
     color: #fbfaf5;
+    font-weight: 400;
     cursor: pointer;
   }
 }

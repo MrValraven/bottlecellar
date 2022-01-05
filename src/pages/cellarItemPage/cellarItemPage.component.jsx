@@ -17,6 +17,7 @@ const body = document.querySelector("body");
 
 const CellarItemPage = ({ match, history }) => {
   const [toggleEditModal, setToggleEditModal] = useState(false);
+  const [toggleNewNoteCreation, setToggleNewNoteCreation] = useState(false);
   const dispatch = useDispatch();
 
   const toggleModal = () => {
@@ -66,16 +67,21 @@ const CellarItemPage = ({ match, history }) => {
             {brand}, {year}
           </h2>
           <p className="rating">{"⭐".repeat(parseInt(rating))}</p>
-          <p className="price">{price}€</p>
+          <p
+            className="price"
+            onClick={() => setToggleNewNoteCreation(!toggleNewNoteCreation)}
+          >
+            {price}€
+          </p>
           <p className="description">
             Lorem ipsum, dolor sit amet consectetur adipisicing elit. Minus
             doloremque et ad dolore cupiditate officiis unde voluptas velit
             assumenda reprehenderit.
           </p>
           <p className="quantity">
-            Quantity:
+            <span>Quantity:</span>
             <i className="fas fa-minus" onClick={decrementQuantity}></i>
-            <span>{quantity}</span>
+            <span className="quantityValue">{quantity}</span>
             <i
               className="fas fa-plus"
               onClick={() => dispatch(incrementItemQuantity(currentCellarItem))}
@@ -100,11 +106,16 @@ const CellarItemPage = ({ match, history }) => {
       </div>
       <div className="notes-header">
         <h1 className="notes-title">Notes</h1>
-        <DefaultButton
-          buttonText="Add new note"
-          iconClass="far fa-sticky-note"
-        />
+        {toggleNewNoteCreation ? (
+          <DefaultButton
+            buttonText="Add new note"
+            iconClass="far fa-sticky-note"
+          />
+        ) : null}
       </div>
+      {!toggleNewNoteCreation ? (
+        <textarea placeholder="Write your new note here..." />
+      ) : null}
       <div className="notes-container">
         <p>
           Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laborum

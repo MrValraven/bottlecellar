@@ -4,7 +4,7 @@ import { withRouter } from "react-router-dom";
 import { editItem } from "../../redux/cellar/cellar.actions";
 import { useDispatch } from "react-redux";
 
-import "./Edit-bottle-modal.styles.scss";
+import "./edit-bottle-modal.styles.scss";
 import logo from "../../assets/wine.svg";
 import DefaultButton from "../default-button/default-button.component";
 
@@ -110,7 +110,7 @@ const EditBottleModal = ({ toggleModal, cellarItem, history }) => {
             <option value="4">4</option>
             <option value="5">5</option>
           </select>
-          <DefaultButton buttonText="Edit bottle" />
+          <DefaultButton buttonText="Save changes" />
         </form>
       </div>
     </div>
