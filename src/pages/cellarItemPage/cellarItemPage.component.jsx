@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { removeItem } from "../../redux/cellar/cellar.actions";
+import {
+  decrementItemQuantity,
+  incrementItemQuantity,
+  removeItem,
+} from "../../redux/cellar/cellar.actions";
 import { withRouter } from "react-router-dom";
 
 import "./cellarItemPage.styles.scss";
@@ -38,6 +42,15 @@ const CellarItemPage = ({ match, history }) => {
 
   const { name, brand, year, price, quantity, rating } = currentCellarItem;
 
+  const decrementQuantity = () => {
+    if (quantity <= 0) {
+      console.log("tret");
+      return;
+    }
+
+    dispatch(decrementItemQuantity(currentCellarItem));
+  };
+
   return (
     <div className="cellar-item-page">
       {toggleEditModal ? (
@@ -47,23 +60,26 @@ const CellarItemPage = ({ match, history }) => {
         />
       ) : null}
       <div className="cellar-item-main">
-        <img src={defaultWineImage} alt="" />
+        <img src={defaultWineImage} alt="wine photo" onClick={toggleModal} />
         <div className="cellar-item-information">
           <h1>{name}</h1>
           <h2>
             {brand}, {year}
           </h2>
           <p className="rating">{"⭐".repeat(parseInt(rating))}</p>
-          <p className="preco">{price}€</p>
-          <p className="descricao">
+          <p className="price">{price}€</p>
+          <p className="description">
             Lorem ipsum, dolor sit amet consectetur adipisicing elit. Minus
             doloremque et ad dolore cupiditate officiis unde voluptas velit
             assumenda reprehenderit.
           </p>
-          <p className="stock" onClick={toggleModal}>
-            Stock: <span>{quantity}</span>
-            <i className="fas fa-plus"></i>
-            <i className="fas fa-minus"></i>
+          <p className="quantity">
+            Quantity: <span>{quantity}</span>
+            <i
+              className="fas fa-plus"
+              onClick={() => dispatch(incrementItemQuantity(currentCellarItem))}
+            ></i>
+            <i className="fas fa-minus" onClick={decrementQuantity}></i>
           </p>
           <div className="button-container">
             <DefaultButton

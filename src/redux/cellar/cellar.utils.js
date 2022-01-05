@@ -51,17 +51,17 @@ export const removeItemFromCellar = (cellarItems, itemToRemove) => {
   console.log("error, item not found");
 };
 
-export const incrementItemQuantity = (cellarItems, itemToModifyQuantity) => {
+export const incrementItemQuantity = (cellarItems, itemToModify) => {
   const isItemInCellar = cellarItems.find(
-    (item) => item.id === itemToModifyQuantity.id
+    (item) => item.id === itemToModify.id
   );
 
   if (isItemInCellar) {
     return cellarItems.map((cellarItem) =>
-      cellarItem.id === itemToModifyQuantity.id
+      cellarItem.id === itemToModify.id
         ? {
             ...cellarItem,
-            quantity: itemToModifyQuantity.quantity + 1,
+            quantity: itemToModify.quantity + 1,
           }
         : cellarItem
     );
@@ -69,17 +69,21 @@ export const incrementItemQuantity = (cellarItems, itemToModifyQuantity) => {
 
   console.log("Item doesn't exist");
 };
-export const decrementItemQuantity = (cellarItems, itemToModifyQuantity) => {
+export const decrementItemQuantity = (cellarItems, itemToModify) => {
   const isItemInCellar = cellarItems.find(
-    (item) => item.id === itemToModifyQuantity.id
+    (item) => item.id === itemToModify.id
   );
+
+  if (isItemInCellar.quantity === 0) {
+    return cellarItems;
+  }
 
   if (isItemInCellar) {
     return cellarItems.map((cellarItem) =>
-      cellarItem.id === itemToModifyQuantity.id
+      cellarItem.id === itemToModify.id
         ? {
             ...cellarItem,
-            quantity: itemToModifyQuantity.quantity - 1,
+            quantity: itemToModify.quantity - 1,
           }
         : cellarItem
     );
