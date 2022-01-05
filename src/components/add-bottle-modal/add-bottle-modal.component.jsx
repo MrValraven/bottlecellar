@@ -27,7 +27,10 @@ const AddBottleModal = ({ toggleModal }) => {
     name: "",
     brand: "",
     year: "",
+    price: "",
+    quantity: "",
     rating: "",
+    notes: [],
   });
   return (
     <div className="add-bottle-modal-container">
@@ -51,8 +54,22 @@ const AddBottleModal = ({ toggleModal }) => {
           />
           <label name="year">Year *</label>
           <input
-            type="text"
+            type="number"
             name="year"
+            onChange={(e) => handleChange(e)}
+            required
+          />
+          <label name="price">Price *</label>
+          <input
+            type="number"
+            name="price"
+            onChange={(e) => handleChange(e)}
+            required
+          />
+          <label name="quantity">Quantity *</label>
+          <input
+            type="number"
+            name="quantity"
             onChange={(e) => handleChange(e)}
             required
           />
@@ -68,11 +85,6 @@ const AddBottleModal = ({ toggleModal }) => {
             <option value="3">3</option>
             <option value="4">4</option>
             <option value="5">5</option>
-            <option value="6">6</option>
-            <option value="7">7</option>
-            <option value="8">8</option>
-            <option value="9">9</option>
-            <option value="10">10</option>
           </select>
           <DefaultButton buttonText="Add bottle" />
         </form>

@@ -1,13 +1,18 @@
-import React from "react";
-import { useSelector } from "react-redux";
+import React, { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { removeItem } from "../../redux/cellar/cellar.actions";
+import { withRouter } from "react-router-dom";
 
 import "./cellarItemPage.styles.scss";
 
 import defaultWineImage from "../../assets/defaultWine.jpg";
 import DefaultButton from "../../components/default-button/default-button.component";
 
-const CellarItemPage = ({ match }) => {
-  console.log(match);
+const CellarItemPage = ({ match, history }) => {
+  const [toggleEditModal, setToggleEditModal] = useState(false);
+  const dispatch = useDispatch();
+  console.log("dit", toggleEditModal);
+
   const currentCellarItem = useSelector((state) =>
     state.cellar.cellarItems.find(
       (cellarItem) =>
@@ -17,7 +22,6 @@ const CellarItemPage = ({ match }) => {
     )
   );
 
-  console.log(currentCellarItem);
   const { name, brand, year, rating } = currentCellarItem;
 
   return (
@@ -36,16 +40,27 @@ const CellarItemPage = ({ match }) => {
             doloremque et ad dolore cupiditate officiis unde voluptas velit
             assumenda reprehenderit.
           </p>
-          <p className="stock">
+          <p
+            className="stock"
+            onClick={() => setToggleEditModal(!toggleEditModal)}
+          >
             Stock: <span>20</span>
             <i className="fas fa-plus"></i>
             <i className="fas fa-minus"></i>
           </p>
           <div className="button-container">
-            <DefaultButton buttonText="Edit Bottle" iconClass="far fa-edit" />
+            <DefaultButton
+              buttonText="Edit Bottle"
+              iconClass="far fa-edit"
+              onClick={() => setToggleEditModal(!toggleEditModal)}
+            />
             <DefaultButton
               buttonText="Delete Bottle"
               iconClass="far fa-trash-alt"
+              onClick={() => {
+                history.push("/user/cellar");
+                dispatch(removeItem(currentCellarItem));
+              }}
             ></DefaultButton>
           </div>
         </div>
@@ -91,4 +106,4 @@ const CellarItemPage = ({ match }) => {
   );
 };
 
-export default CellarItemPage;
+export default withRouter(CellarItemPage);

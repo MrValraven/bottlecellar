@@ -44,7 +44,7 @@ export const removeItemFromCellar = (cellarItems, itemToRemove) => {
   );
 
   if (isItemInCellar) {
-    return cartItems.filter((item) => item.id !== itemToRemove.id);
+    return cellarItems.filter((item) => item.id !== itemToRemove.id);
   }
 
   console.log("error, item not found");
