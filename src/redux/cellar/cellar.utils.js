@@ -17,7 +17,7 @@ export const addItemToCellar = (cellarItems, itemToAdd) => {
   return [...cellarItems, { ...itemToAdd, id: uuidv4() }];
 };
 
-export const editItemFromCeller = (cellarItems, itemToEdit) => {
+export const editItemFromCellar = (cellarItems, itemToEdit) => {
   const isItemInCellar = cellarItems.find((item) => item.id === itemToEdit.id);
 
   if (isItemInCellar) {
