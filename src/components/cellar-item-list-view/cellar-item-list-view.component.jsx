@@ -2,7 +2,7 @@ import React from "react";
 import { withRouter } from "react-router-dom";
 
 import "./cellar-item-list-view.styles.scss";
-import defaultWineImage from "../../assets/defaultWine.jpg";
+import defaultWineImage from "../../assets/wine1.png";
 import logo from "../../assets/wine.svg";
 
 const CellarItemListView = ({ item, history, match }) => {
@@ -16,19 +16,19 @@ const CellarItemListView = ({ item, history, match }) => {
 
   return (
     <div className="cellar-item-list-view" onClick={goToItemPage}>
-      <img src={defaultWineImage} alt="" />
+      <img className="mainPicture" src={defaultWineImage} alt="" />
       <div className="information">
         <div className="generalInfo">
           <div className="nameAndBrand">
             <h1>{name}</h1>
-            <p>
+            <p className="brand">
               {brand}, {year}
             </p>
           </div>
           <p>This item has {notes.length} notes</p>
         </div>
         <div className="ratings">
-          <p>{price}€</p>
+          <p className="price">{price}€</p>
           <p>
             <span className="totalRating">
               {"⭐".repeat(parseInt(5 - rating))}

@@ -164,24 +164,27 @@ const CellarOverview = () => {
           />
           <i className="fas fa-search"></i>
         </div>
-        <select
-          name="filterBy"
-          id="filterBy"
-          value={sortingOption}
-          onChange={(e) => handleFilterChange(e)}
-        >
-          <option value="No filter">No filter</option>
-          <option value="nameA-Z">Name (A-Z)</option>
-          <option value="nameZ-A">Name (Z-A)</option>
-          <option value="brandA-Z">Brand (A-Z)</option>
-          <option value="brandZ-A">Brand (Z-A)</option>
-          <option value="yearAscending">Year (Asc)</option>
-          <option value="yearDescending">Year (Desc)</option>
-          <option value="ratingAscending">Rating (Asc)</option>
-          <option value="ratingDescending">Rating (Desc)</option>
-          <option value="quantityAscending">Quantity (Asc)</option>
-          <option value="quantityDescending">Quantity (Desc)</option>
-        </select>
+        <div className="select-container">
+          <select
+            name="filterBy"
+            id="filterBy"
+            value={sortingOption}
+            onChange={(e) => handleFilterChange(e)}
+          >
+            <option value="No filter">No filter</option>
+            <option value="nameA-Z">Name (A-Z)</option>
+            <option value="nameZ-A">Name (Z-A)</option>
+            <option value="brandA-Z">Brand (A-Z)</option>
+            <option value="brandZ-A">Brand (Z-A)</option>
+            <option value="yearAscending">Year (Asc)</option>
+            <option value="yearDescending">Year (Desc)</option>
+            <option value="ratingAscending">Rating (Asc)</option>
+            <option value="ratingDescending">Rating (Desc)</option>
+            <option value="quantityAscending">Quantity (Asc)</option>
+            <option value="quantityDescending">Quantity (Desc)</option>
+          </select>
+          <i className="fas fa-chevron-down"></i>
+        </div>
       </div>
       <div className="cellar-container">
         {sortedAndFilteredItems.map((item) => (

@@ -40,16 +40,26 @@
       }
     }
 
-    select {
-      border: none;
-      outline: none;
-      font-family: "Roboto", sans-serif;
-      margin-top: 20px;
-      margin-bottom: 15px;
-      padding: 20px;
-      border-radius: 12px;
-      font-size: 18px;
-      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+    .select-container {
+      position: relative;
+      select {
+        appearance: none;
+        border: none;
+        outline: none;
+        font-family: "Roboto", sans-serif;
+        margin-top: 20px;
+        margin-bottom: 15px;
+        padding: 20px;
+        border-radius: 12px;
+        font-size: 18px;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+      }
+
+      i {
+        position: absolute;
+        top: 44px;
+        right: 20px;
+      }
     }
   }
 
