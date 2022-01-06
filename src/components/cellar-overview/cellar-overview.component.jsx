@@ -147,18 +147,23 @@ const CellarOverview = () => {
     <div className="cellar-overview">
       {showAddBottleModal ? <AddBottleModal toggleModal={toggleModal} /> : null}
       <div className="cellar-header">
-        <h1 className="cellar-title">My Cellar</h1>
+        <h1 className="cellar-title" onClick={toggleModal}>
+          My Cellar
+        </h1>
         <DefaultButton
           buttonText="ADD NEW BOTTLE"
           onClick={toggleModal}
         ></DefaultButton>
       </div>
       <div className="cellar-filters">
-        <input
-          type="text"
-          placeholder="Search by name, brand, year, or rating"
-          onChange={handleChange}
-        />
+        <div className="input-container">
+          <input
+            type="text"
+            placeholder="Search by name, brand, year, or rating"
+            onChange={handleChange}
+          />
+          <i className="fas fa-search"></i>
+        </div>
         <select
           name="filterBy"
           id="filterBy"
@@ -179,9 +184,6 @@ const CellarOverview = () => {
         </select>
       </div>
       <div className="cellar-container">
-        <p className="toggle" onClick={toggleModal}>
-          Bottle1
-        </p>
         {sortedAndFilteredItems.map((item) => (
           <CellarItemListView key={item.id} item={item} />
         ))}

@@ -12,18 +12,49 @@
 
   .cellar-filters {
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
 
-    input {
+    .input-container {
+      position: relative;
       width: 60%;
-      padding: 10px 20px;
+
+      input {
+        width: 100%;
+        border: none;
+        outline: none;
+        font-family: "Roboto", sans-serif;
+        margin-top: 20px;
+        margin-bottom: 15px;
+        padding: 20px 55px 20px 20px;
+        border-radius: 12px;
+        font-size: 18px;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+      }
+
+      i {
+        position: absolute;
+        top: 42px;
+        right: 25px;
+        font-size: 20px;
+        opacity: 0.6;
+      }
+    }
+
+    select {
+      border: none;
+      outline: none;
+      font-family: "Roboto", sans-serif;
+      margin-top: 20px;
+      margin-bottom: 15px;
+      padding: 20px;
+      border-radius: 12px;
+      font-size: 18px;
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
     }
   }
 
   .cellar-container {
     display: grid;
-
-    border: 1px solid black;
 
     .toggle {
       padding: 20px;
