@@ -1,13 +1,16 @@
 .notes-container {
   margin-top: 20px;
-  padding: 20px 30px;
   border-radius: 12px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
   display: flex;
+  justify-content: space-between;
 
   p {
     max-width: 98%;
     font-size: 18px;
+    padding: 30px 0px 30px 20px;
+    hyphens: auto;
+    margin-right: 10px;
   }
 
   .actions-container {
@@ -15,19 +18,43 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+    min-height: 100%;
+    margin-left: 10px;
+    border-radius: 0 12px 12px 0;
 
     i {
+      display: flex;
+      width: 100%;
       height: 50%;
-      margin: 0px 5px;
+      padding: 20px 25px;
       font-size: 20px;
+      transition: all 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+
+      &::before {
+        align-self: center;
+      }
 
       &:hover {
         cursor: pointer;
       }
 
       &:first-child {
-        margin-bottom: 10px;
-        margin-left: 7px;
+        border-bottom: 1px solid #bebebe;
+
+        &:hover {
+          background-color: black;
+          color: white;
+        }
+      }
+
+      &:nth-child(2) {
+        border-radius: 0px 0px 12px 0px;
+
+        &:hover {
+          background-color: rgb(49, 9, 9);
+          color: white;
+        }
       }
     }
   }
