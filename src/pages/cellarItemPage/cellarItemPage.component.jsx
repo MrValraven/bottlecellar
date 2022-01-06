@@ -10,7 +10,7 @@ import { withRouter } from "react-router-dom";
 
 import "./cellarItemPage.styles.scss";
 
-import defaultWineImage from "../../assets/defaultWine.jpg";
+import defaultWineImage from "../../assets/wine-details.png";
 import DefaultButton from "../../components/default-button/default-button.component";
 import EditBottleModal from "../../components/edit-bottle-modal/edit-bottle-modal.component";
 import NotesCard from "../../components/notes-card/notes-card.component";
@@ -158,6 +158,7 @@ const CellarItemPage = ({ match, history }) => {
               </div>
             </div>
           </div>
+          <hr />
           <div className="notes-header">
             <h1 className="notes-title">Notes</h1>
             {!toggleNewNoteCreation ? (

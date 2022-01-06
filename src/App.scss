@@ -1,3 +1,36 @@
 .app {
-  padding: 20px 75px;
+  padding: 20px 350px 100px 350px;
+}
+
+@media screen and (max-width: 1800px) {
+  .app {
+    padding: 20px 250px 100px 250px;
+  }
+}
+
+@media screen and (max-width: 1550px) {
+  .app {
+    padding: 20px 150px 100px 150px;
+  }
+}
+@media screen and (max-width: 1375px) {
+  .app {
+    padding: 20px 100px 100px 100px;
+  }
+}
+
+@media screen and (max-width: 1110px) {
+  .app {
+    padding: 20px 50px 100px 50px;
+  }
+}
+@media screen and (max-width: 900px) {
+  .app {
+    padding: 25px 25px 100px 25px;
+  }
+}
+@media screen and (max-width: 500px) {
+  .app {
+    padding: 10px 10px 100px 10px;
+  }
 }
