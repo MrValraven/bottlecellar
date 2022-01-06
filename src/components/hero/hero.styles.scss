@@ -2,6 +2,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  height: 70vh;
 
   .heroText {
     width: 50%;
@@ -9,13 +10,13 @@
     flex-direction: column;
 
     h1 {
-      font-size: 75px;
+      font-size: 120px;
     }
 
     p {
       font-size: 18px;
       max-width: 500px;
-      margin: 25px 0;
+      margin: 0px 0px 25px 0;
     }
 
     .heroButton {
@@ -36,7 +37,7 @@
   }
 
   .heroImage {
-    width: 50%;
+    width: 30%;
     display: flex;
     justify-content: flex-end;
 

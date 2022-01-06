@@ -18,7 +18,7 @@ const EditBottleModal = ({ toggleModal, cellarItem, history, match }) => {
         ...cellarItem,
         ...formData,
         year: Math.abs(formData.year),
-        price: Math.abs(formData.price),
+        price: Math.abs(formData.price).toFixed(2),
         quantity: Math.abs(formData.quantity),
       })
     );
