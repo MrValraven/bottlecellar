@@ -108,15 +108,9 @@ const CellarItemPage = ({ match, history }) => {
             />
           ) : null}
           <div className="cellar-item-main">
-            <img
-              src={defaultWineImage}
-              alt="wine photo"
-              onClick={toggleModal}
-            />
+            <img src={defaultWineImage} alt="wine photo" />
             <div className="cellar-item-information">
-              <h1 onClick={handleNewNoteSubmission}>
-                {currentCellarItem.name}
-              </h1>
+              <h1>{currentCellarItem.name}</h1>
               <h2>
                 {currentCellarItem.brand}, {currentCellarItem.year}
               </h2>
@@ -126,12 +120,7 @@ const CellarItemPage = ({ match, history }) => {
                   {"⭐".repeat(parseInt(5 - currentCellarItem.rating))}
                 </span>
               </p>
-              <p
-                className="price"
-                onClick={() => setToggleNewNoteCreation(!toggleNewNoteCreation)}
-              >
-                {currentCellarItem.price}€
-              </p>
+              <p className="price">{currentCellarItem.price}€</p>
               <p className="description">
                 Lorem ipsum, dolor sit amet consectetur adipisicing elit. Minus
                 doloremque et ad dolore cupiditate officiis unde voluptas velit
@@ -154,12 +143,14 @@ const CellarItemPage = ({ match, history }) => {
                 <DefaultButton
                   buttonText="Edit Bottle"
                   iconClass="far fa-edit"
-                  onClick={() => setToggleEditModal(!toggleEditModal)}
+                  clickEvent={() => {
+                    setToggleEditModal(!toggleEditModal);
+                  }}
                 />
                 <DefaultButton
                   buttonText="Delete Bottle"
                   iconClass="far fa-trash-alt"
-                  onClick={() => {
+                  clickEvent={() => {
                     history.push("/user/cellar");
                     dispatch(removeItem(currentCellarItem));
                   }}
@@ -173,6 +164,9 @@ const CellarItemPage = ({ match, history }) => {
               <DefaultButton
                 buttonText="Add new note"
                 iconClass="far fa-sticky-note"
+                clickEvent={() =>
+                  setToggleNewNoteCreation(!toggleNewNoteCreation)
+                }
               />
             ) : null}
           </div>
@@ -183,12 +177,23 @@ const CellarItemPage = ({ match, history }) => {
                 value={note}
                 onChange={(e) => handleChange(e)}
               />
-              <DefaultButton
-                buttonText="Add note"
-                iconClass="far fa-sticky-note"
-              />
+              <div className="textarea-button-container">
+                <DefaultButton
+                  buttonText="Add note"
+                  iconClass="far fa-sticky-note"
+                  clickEvent={handleNewNoteSubmission}
+                />
+                <DefaultButton
+                  buttonText="Cancel"
+                  iconClass="far fa-window-close"
+                  clickEvent={() =>
+                    setToggleNewNoteCreation(!toggleNewNoteCreation)
+                  }
+                />
+              </div>
             </div>
           ) : null}
+
           {currentCellarItem.notes.map((note, index) => (
             <NotesCard
               key={index}
@@ -197,42 +202,6 @@ const CellarItemPage = ({ match, history }) => {
               handleDelete={() => handleNoteDeletion(index)}
             />
           ))}
-          <div className="notes-container">
-            <p>
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laborum
-              nobis, itaque saepe voluptatum cupiditate eveniet rem ex error
-              molestiae, laudantium quae id ut magnam provident atque doloremque
-              repudiandae explicabo vitae!
-            </p>
-            <div className="actions-container">
-              <i className="far fa-edit"></i>
-              <i className="far fa-trash-alt"></i>
-            </div>
-          </div>
-          <div className="notes-container">
-            <p>
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laborum
-              nobis, itaque saepe voluptatum cupiditate eveniet rem ex error
-              molestiae, laudantium quae id ut magnam provident atque doloremque
-              repudiandae explicabo vitae!
-            </p>
-            <div className="actions-container">
-              <i className="far fa-edit"></i>
-              <i className="far fa-trash-alt"></i>
-            </div>
-          </div>
-          <div className="notes-container">
-            <p>
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laborum
-              nobis, itaque saepe voluptatum cupiditate eveniet rem ex error
-              molestiae, laudantium quae id ut magnam provident atque doloremque
-              repudiandae explicabo vitae!
-            </p>
-            <div className="actions-container">
-              <i className="far fa-edit"></i>
-              <i className="far fa-trash-alt"></i>
-            </div>
-          </div>
         </div>
       ) : null}
     </div>
