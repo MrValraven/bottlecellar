@@ -20,6 +20,10 @@ export const decrementItemQuantity = (item) => ({
   type: CellarActionTypes.DECREMENT_ITEM_QUANTITY,
   payload: item,
 });
+export const setItemNotes = (item) => ({
+  type: CellarActionTypes.SET_ITEM_NOTES,
+  payload: item,
+});
 export const setCellarItems = (cellarItems) => ({
   type: CellarActionTypes.SET_CELLAR_ITEMS,
   payload: cellarItems,

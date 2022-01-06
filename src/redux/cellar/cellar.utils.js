@@ -91,3 +91,22 @@ export const decrementItemQuantity = (cellarItems, itemToModify) => {
 
   console.log("Item doesn't exist");
 };
+
+export const setItemNotes = (cellarItems, itemToModify) => {
+  const isItemInCellar = cellarItems.find(
+    (item) => item.id === itemToModify.id
+  );
+
+  if (isItemInCellar) {
+    return cellarItems.map((cellarItem) =>
+      cellarItem.id === itemToModify.id
+        ? {
+            ...cellarItem,
+            notes: itemToModify.notes,
+          }
+        : cellarItem
+    );
+  }
+
+  console.log("Item doesn't exist");
+};

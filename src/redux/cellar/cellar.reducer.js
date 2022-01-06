@@ -51,6 +51,13 @@ const cellarReducer = (state = INITIAL_STATE, action) => {
         ...state,
         cellarItems: cellarItems,
       };
+    case CellarActionTypes.SET_ITEM_NOTES:
+      cellarItems = setItemNotes(state.cellarItems, action.payload);
+      localStorage.setItem("cellarItems", JSON.stringify(cellarItems));
+      return {
+        ...state,
+        cellarItems: cellarItems,
+      };
     case CellarActionTypes.SET_CELLAR_ITEMS:
       return {
         ...state,
