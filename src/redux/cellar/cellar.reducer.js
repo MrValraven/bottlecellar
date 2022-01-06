@@ -5,6 +5,7 @@ import {
   editItemFromCellar,
   incrementItemQuantity,
   decrementItemQuantity,
+  setItemNotes,
 } from "./cellar.utils";
 
 const INITIAL_STATE = {

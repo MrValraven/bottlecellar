@@ -4,6 +4,7 @@ import {
   decrementItemQuantity,
   incrementItemQuantity,
   removeItem,
+  setItemNotes,
 } from "../../redux/cellar/cellar.actions";
 import { withRouter } from "react-router-dom";
 
@@ -12,6 +13,7 @@ import "./cellarItemPage.styles.scss";
 import defaultWineImage from "../../assets/defaultWine.jpg";
 import DefaultButton from "../../components/default-button/default-button.component";
 import EditBottleModal from "../../components/edit-bottle-modal/edit-bottle-modal.component";
+import NotesCard from "../../components/notes-card/notes-card.component";
 
 const body = document.querySelector("body");
 
@@ -22,6 +24,9 @@ const CellarItemPage = ({ match, history }) => {
   const [toggleNewNoteCreation, setToggleNewNoteCreation] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [currentCellarItem, setCurrentCellarItem] = useState();
+  useState;
+  const [note, setNote] = useState("");
+  const [isNoteBeingEdited, setIsNoteBeingEdited] = useState(false);
 
   const currentCellarItemTemp = useSelector((state) =>
     state.cellar.cellarItems.find(
@@ -31,6 +36,39 @@ const CellarItemPage = ({ match, history }) => {
           .replaceAll(" ", "-") === match.params.name
     )
   );
+
+  const handleChange = (e) => {
+    setNote(e.target.value);
+  };
+
+  const handleNoteEdit = (index) => {
+    setNote(currentCellarItem.notes.splice(index, 1));
+    setToggleNewNoteCreation(!toggleNewNoteCreation);
+    setIsNoteBeingEdited(!isNoteBeingEdited);
+  };
+
+  const handleNoteDeletion = (index) => {
+    currentCellarItem.notes.splice(index, 1);
+    dispatch(setItemNotes(currentCellarItem));
+    setIsNoteBeingEdited(!isNoteBeingEdited);
+  };
+
+  const handleNewNoteSubmission = (index) => {
+    if (note.length <= 0) {
+      return;
+    } else if (isNoteBeingEdited) {
+      dispatch(setItemNotes(currentCellarItem));
+    }
+
+    dispatch(
+      setItemNotes({
+        ...currentCellarItem,
+        notes: [note, ...currentCellarItem.notes],
+      })
+    );
+    setToggleNewNoteCreation(!toggleNewNoteCreation);
+    setNote("");
+  };
 
   const toggleModal = () => {
     setToggleEditModal(!toggleEditModal);
@@ -76,7 +114,9 @@ const CellarItemPage = ({ match, history }) => {
               onClick={toggleModal}
             />
             <div className="cellar-item-information">
-              <h1>{currentCellarItem.name}</h1>
+              <h1 onClick={handleNewNoteSubmission}>
+                {currentCellarItem.name}
+              </h1>
               <h2>
                 {currentCellarItem.brand}, {currentCellarItem.year}
               </h2>
@@ -138,13 +178,25 @@ const CellarItemPage = ({ match, history }) => {
           </div>
           {toggleNewNoteCreation ? (
             <div className="note-creation">
-              <textarea placeholder="Write your new note here" />
+              <textarea
+                placeholder="Write your new note here"
+                value={note}
+                onChange={(e) => handleChange(e)}
+              />
               <DefaultButton
                 buttonText="Add note"
                 iconClass="far fa-sticky-note"
               />
             </div>
           ) : null}
+          {currentCellarItem.notes.map((note, index) => (
+            <NotesCard
+              key={index}
+              note={note}
+              handleEdit={() => handleNoteEdit(index)}
+              handleDelete={() => handleNoteDeletion(index)}
+            />
+          ))}
           <div className="notes-container">
             <p>
               Lorem ipsum, dolor sit amet consectetur adipisicing elit. Laborum
