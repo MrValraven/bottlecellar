@@ -8,7 +8,7 @@ import "./edit-bottle-modal.styles.scss";
 import logo from "../../assets/wine.svg";
 import DefaultButton from "../default-button/default-button.component";
 
-const EditBottleModal = ({ toggleModal, cellarItem, history }) => {
+const EditBottleModal = ({ toggleModal, cellarItem, history, match }) => {
   const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
@@ -23,7 +23,7 @@ const EditBottleModal = ({ toggleModal, cellarItem, history }) => {
       })
     );
     toggleModal();
-    const sanitizeURL = (
+    const sanitizedURL = (
       formData.name +
       " " +
       formData.brand +
@@ -32,7 +32,8 @@ const EditBottleModal = ({ toggleModal, cellarItem, history }) => {
     )
       .toLowerCase()
       .replaceAll(" ", "-");
-    history.push(`/user/cellar/${sanitizeURL}`);
+    history.replace(match.url, `/user/cellar/`);
+    history.push(`/user/cellar/${sanitizedURL}`);
   };
 
   const handleChange = (e) => {
@@ -77,6 +78,8 @@ const EditBottleModal = ({ toggleModal, cellarItem, history }) => {
             type="number"
             name="year"
             value={formData.year}
+            pattern="[0-9]{4}"
+            min="0"
             onChange={(e) => handleChange(e)}
             required
           />
@@ -93,6 +96,7 @@ const EditBottleModal = ({ toggleModal, cellarItem, history }) => {
             type="number"
             name="quantity"
             value={formData.quantity}
+            min="0"
             onChange={(e) => handleChange(e)}
             required
           />

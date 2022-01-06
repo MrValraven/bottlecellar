@@ -35,7 +35,7 @@ const CellarOverview = () => {
     (cellarItem) =>
       cellarItem.name.toLowerCase().includes(searchInput.toLowerCase()) ||
       cellarItem.brand.toLowerCase().includes(searchInput.toLowerCase()) ||
-      cellarItem.year.includes(searchInput)
+      cellarItem.year.toString().includes(searchInput)
   );
 
   return (
