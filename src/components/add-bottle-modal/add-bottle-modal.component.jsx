@@ -36,7 +36,7 @@ const AddBottleModal = ({ toggleModal }) => {
     year: "",
     price: "",
     quantity: "",
-    rating: "",
+    rating: "1",
     notes: [],
   });
   return (

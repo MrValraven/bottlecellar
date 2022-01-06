@@ -9,12 +9,25 @@ import CellarItemListView from "../cellar-item-list-view/cellar-item-list-view.c
 const body = document.querySelector("body");
 
 const CellarOverview = () => {
-  const [showAddBottleModal, setShowAddBottleModal] = useState(false);
-
   const cellarItems = useSelector((state) => state.cellar.cellarItems);
+
+  const [showAddBottleModal, setShowAddBottleModal] = useState(false);
+  const [searchInput, setSearchInput] = useState("");
+  const [sortingOption, setSortingOption] = useState("No filter");
+  const [sortedAndFilteredItems, setSortedAndFilteredItems] = useState([]);
+
+  const [sortedItems, setSortedItems] = useState([]);
 
   const toggleModal = () => {
     setShowAddBottleModal(!showAddBottleModal);
+  };
+
+  const handleChange = (e) => {
+    setSearchInput(e.target.value);
+  };
+
+  const handleFilterChange = (e) => {
+    setSortingOption(e.target.value);
   };
 
   useEffect(() => {
@@ -25,18 +38,172 @@ const CellarOverview = () => {
     }
   }, [showAddBottleModal]);
 
-  const [searchInput, setSearchInput] = useState("");
-
-  const handleChange = (e) => {
-    setSearchInput(e.target.value);
-  };
-
-  const filteredCellarItems = cellarItems.filter(
+  let filteredCellarItems = cellarItems.filter(
     (cellarItem) =>
       cellarItem.name.toLowerCase().includes(searchInput.toLowerCase()) ||
       cellarItem.brand.toLowerCase().includes(searchInput.toLowerCase()) ||
-      cellarItem.year.toString().includes(searchInput)
+      cellarItem.year.toString().includes(searchInput) ||
+      cellarItem.rating.includes(searchInput)
   );
+
+  useEffect(() => {
+    setSortedAndFilteredItems(() =>
+      sortedItems.filter(
+        (sortedItem) =>
+          sortedItem.name.toLowerCase().includes(searchInput.toLowerCase()) ||
+          sortedItem.brand.toLowerCase().includes(searchInput.toLowerCase()) ||
+          sortedItem.year.toString().includes(searchInput) ||
+          sortedItem.rating.includes(searchInput)
+      )
+    );
+  }, [searchInput]);
+
+  useEffect(() => {
+    switch (sortingOption) {
+      case "nameA-Z":
+        filteredCellarItems = filteredCellarItems.sort((a, b) =>
+          a.name.localeCompare(b.name)
+        );
+        setSortedAndFilteredItems(filteredCellarItems);
+        setSortedItems(filteredCellarItems);
+        break;
+      case "nameZ-A":
+        filteredCellarItems = filteredCellarItems
+          .sort((a, b) => a.name.localeCompare(b.name))
+          .reverse();
+        setSortedAndFilteredItems(filteredCellarItems);
+        setSortedItems(filteredCellarItems);
+        break;
+      case "brandA-Z":
+        filteredCellarItems = filteredCellarItems.sort((a, b) =>
+          a.brand.localeCompare(b.brand)
+        );
+        setSortedAndFilteredItems(filteredCellarItems);
+        setSortedItems(filteredCellarItems);
+        break;
+      case "brandZ-A":
+        filteredCellarItems = filteredCellarItems
+          .sort((a, b) => a.brand.localeCompare(b.brand))
+          .reverse();
+        setSortedAndFilteredItems(filteredCellarItems);
+        setSortedItems(filteredCellarItems);
+        break;
+      case "yearAscending":
+        filteredCellarItems = filteredCellarItems.sort((a, b) =>
+          a.year.toString().localeCompare(b.year.toString())
+        );
+        setSortedAndFilteredItems(filteredCellarItems);
+        setSortedItems(filteredCellarItems);
+        break;
+      case "yearDescending":
+        filteredCellarItems = filteredCellarItems
+          .sort((a, b) => a.year.toString().localeCompare(b.year.toString()))
+          .reverse();
+        setSortedAndFilteredItems(filteredCellarItems);
+        setSortedItems(filteredCellarItems);
+        break;
+      case "ratingAscending":
+        filteredCellarItems = filteredCellarItems.sort((a, b) =>
+          a.rating.localeCompare(b.rating)
+        );
+        setSortedAndFilteredItems(filteredCellarItems);
+        setSortedItems(filteredCellarItems);
+        break;
+      case "ratingDescending":
+        filteredCellarItems = filteredCellarItems
+          .sort((a, b) => a.rating.localeCompare(b.rating))
+          .reverse();
+        setSortedAndFilteredItems(filteredCellarItems);
+        setSortedItems(filteredCellarItems);
+        break;
+      case "quantityAscending":
+        filteredCellarItems = filteredCellarItems.sort((a, b) =>
+          a.quantity.toString().localeCompare(b.quantity.toString())
+        );
+        setSortedAndFilteredItems(filteredCellarItems);
+        setSortedItems(filteredCellarItems);
+        break;
+      case "quantityDescending":
+        filteredCellarItems = filteredCellarItems
+          .sort((a, b) =>
+            a.quantity.toString().localeCompare(b.quantity.toString())
+          )
+          .reverse();
+        setSortedAndFilteredItems(filteredCellarItems);
+        setSortedItems(filteredCellarItems);
+        break;
+      default:
+        console.log("run default");
+        setSortedAndFilteredItems(filteredCellarItems);
+        setSortedItems(filteredCellarItems);
+        break;
+    }
+    console.log(sortedAndFilteredItems);
+  }, [sortingOption]);
+
+  let items = [];
+
+  /*  const sortCellarItems = (sortingType) => {
+    console.log("hello");
+    switch (sortingType) {
+      case "nameA-Z":
+        filteredCellarItems = filteredCellarItems.sort((a, b) =>
+          a.name.localeCompare(b.name)
+        );
+        console.log("inside nameA");
+        console.log(filteredCellarItems);
+        return items;
+      case "nameZ-A":
+        filteredCellarItems = filteredCellarItems
+          .sort((a, b) => a.name.localeCompare(b.name))
+          .reverse();
+        console.log(filteredCellarItems);
+        return items;
+      case "brandA-Z":
+        filteredCellarItems = filteredCellarItems.sort((a, b) =>
+          a.brand.localeCompare(b.brand)
+        );
+        return items;
+      case "brandZ-A":
+        filteredCellarItems = filteredCellarItems.sort((a, b) =>
+          a.brand.localeCompare(b.brand)
+        );
+        return items.reverse();
+      case "yearAscending":
+        filteredCellarItems = filteredCellarItems.sort((a, b) =>
+          a.year.toString().localeCompare(b.year.toString())
+        );
+        return items;
+      case "yearDescending":
+        filteredCellarItems = filteredCellarItems.sort((a, b) =>
+          a.year.toString().localeCompare(b.year.toString())
+        );
+        return items.reverse();
+      case "ratingAscending":
+        filteredCellarItems = filteredCellarItems.sort((a, b) =>
+          a.rating.localeCompare(b.rating)
+        );
+        return items;
+      case "ratingDescending":
+        filteredCellarItems = filteredCellarItems.sort((a, b) =>
+          a.rating.localeCompare(b.rating)
+        );
+        return items.reverse();
+      case "quantityAscending":
+        filteredCellarItems = filteredCellarItems.sort((a, b) =>
+          a.quantity.toString().localeCompare(b.quantity.toString())
+        );
+        return items;
+      case "quantityDescending":
+        filteredCellarItems = filteredCellarItems.sort((a, b) =>
+          a.quantity.toString().localeCompare(b.quantity.toString())
+        );
+        return items.reverse();
+      default:
+        console.log("run default");
+        return items;
+    }
+  }; */
 
   return (
     <div className="cellar-overview">
@@ -52,21 +219,32 @@ const CellarOverview = () => {
         <input
           type="text"
           placeholder="Search by name, brand, year..."
-          value={searchInput}
           onChange={handleChange}
         />
-        <select name="filterBy" id="filterBy">
-          <option value="name">Name</option>
-          <option value="brand">Brand</option>
-          <option value="year">Year</option>
-          <option value="rating">Rating</option>
+        <select
+          name="filterBy"
+          id="filterBy"
+          value={sortingOption}
+          onChange={(e) => handleFilterChange(e)}
+        >
+          <option value="No filter">No filter</option>
+          <option value="nameA-Z">Name (A-Z)</option>
+          <option value="nameZ-A">Name (Z-A)</option>
+          <option value="brandA-Z">Brand (A-Z)</option>
+          <option value="brandZ-A">Brand (Z-A)</option>
+          <option value="yearAscending">Year (Asc)</option>
+          <option value="yearDescending">Year (Desc)</option>
+          <option value="ratingAscending">Rating (Asc)</option>
+          <option value="ratingDescending">Rating (Desc)</option>
+          <option value="quantityAscending">Quantity (Asc)</option>
+          <option value="quantityDescending">Quantity (Desc)</option>
         </select>
       </div>
       <div className="cellar-container">
         <p className="toggle" onClick={toggleModal}>
           Bottle1
         </p>
-        {filteredCellarItems.map((item) => (
+        {sortedAndFilteredItems.map((item) => (
           <CellarItemListView key={item.id} item={item} />
         ))}
       </div>
