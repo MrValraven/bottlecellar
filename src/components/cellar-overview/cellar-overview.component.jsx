@@ -137,12 +137,10 @@ const CellarOverview = () => {
         setSortedItems(filteredCellarItems);
         break;
       default:
-        console.log("run default");
         setSortedAndFilteredItems(filteredCellarItems);
         setSortedItems(filteredCellarItems);
         break;
     }
-    console.log(sortedAndFilteredItems);
   }, [sortingOption]);
 
   return (

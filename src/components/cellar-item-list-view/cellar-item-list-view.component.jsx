@@ -29,7 +29,12 @@ const CellarItemListView = ({ item, history, match }) => {
         </div>
         <div className="ratings">
           <p>{price}€</p>
-          <p>{"⭐".repeat(parseInt(rating))}</p>
+          <p>
+            <span className="totalRating">
+              {"⭐".repeat(parseInt(5 - rating))}
+            </span>
+            {"⭐".repeat(parseInt(rating))}
+          </p>
         </div>
       </div>
       <div className="bottlesAvailable">
