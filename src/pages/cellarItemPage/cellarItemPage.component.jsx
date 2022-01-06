@@ -26,7 +26,7 @@ const CellarItemPage = ({ match, history }) => {
   const [currentCellarItem, setCurrentCellarItem] = useState();
   useState;
   const [note, setNote] = useState("");
-  const [isNoteBeingEdited, setIsNoteBeingEdited] = useState(false);
+  const [tempNote, setTempNote] = useState("");
 
   const currentCellarItemTemp = useSelector((state) =>
     state.cellar.cellarItems.find(
@@ -42,22 +42,27 @@ const CellarItemPage = ({ match, history }) => {
   };
 
   const handleNoteEdit = (index) => {
-    setNote(currentCellarItem.notes.splice(index, 1));
+    setTempNote(currentCellarItem.notes.splice(index, 1));
     setToggleNewNoteCreation(!toggleNewNoteCreation);
-    setIsNoteBeingEdited(!isNoteBeingEdited);
   };
 
   const handleNoteDeletion = (index) => {
     currentCellarItem.notes.splice(index, 1);
     dispatch(setItemNotes(currentCellarItem));
-    setIsNoteBeingEdited(!isNoteBeingEdited);
   };
 
-  const handleNewNoteSubmission = (index) => {
+  const handleNoteEditCancelation = () => {
+    if (tempNote) {
+      currentCellarItem.notes.push(tempNote);
+      setTempNote("");
+    }
+
+    setToggleNewNoteCreation(!toggleNewNoteCreation);
+  };
+
+  const handleNewNoteSubmission = () => {
     if (note.length <= 0) {
       return;
-    } else if (isNoteBeingEdited) {
-      dispatch(setItemNotes(currentCellarItem));
     }
 
     dispatch(
@@ -73,6 +78,10 @@ const CellarItemPage = ({ match, history }) => {
   const toggleModal = () => {
     setToggleEditModal(!toggleEditModal);
   };
+
+  useEffect(() => {
+    setNote(tempNote);
+  }, [tempNote]);
 
   useEffect(() => {
     setTimeout(() => {
@@ -187,14 +196,11 @@ const CellarItemPage = ({ match, history }) => {
                 <DefaultButton
                   buttonText="Cancel"
                   iconClass="far fa-window-close"
-                  clickEvent={() =>
-                    setToggleNewNoteCreation(!toggleNewNoteCreation)
-                  }
+                  clickEvent={handleNoteEditCancelation}
                 />
               </div>
             </div>
           ) : null}
-
           {currentCellarItem.notes.map((note, index) => (
             <NotesCard
               key={index}
