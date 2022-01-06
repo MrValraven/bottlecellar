@@ -31,6 +31,10 @@ const CellarOverview = () => {
   };
 
   useEffect(() => {
+    setSortedAndFilteredItems(cellarItems);
+  }, [cellarItems]);
+
+  useEffect(() => {
     if (showAddBottleModal) {
       body.classList.add("modalIsToggled");
     } else {
@@ -141,70 +145,6 @@ const CellarOverview = () => {
     console.log(sortedAndFilteredItems);
   }, [sortingOption]);
 
-  let items = [];
-
-  /*  const sortCellarItems = (sortingType) => {
-    console.log("hello");
-    switch (sortingType) {
-      case "nameA-Z":
-        filteredCellarItems = filteredCellarItems.sort((a, b) =>
-          a.name.localeCompare(b.name)
-        );
-        console.log("inside nameA");
-        console.log(filteredCellarItems);
-        return items;
-      case "nameZ-A":
-        filteredCellarItems = filteredCellarItems
-          .sort((a, b) => a.name.localeCompare(b.name))
-          .reverse();
-        console.log(filteredCellarItems);
-        return items;
-      case "brandA-Z":
-        filteredCellarItems = filteredCellarItems.sort((a, b) =>
-          a.brand.localeCompare(b.brand)
-        );
-        return items;
-      case "brandZ-A":
-        filteredCellarItems = filteredCellarItems.sort((a, b) =>
-          a.brand.localeCompare(b.brand)
-        );
-        return items.reverse();
-      case "yearAscending":
-        filteredCellarItems = filteredCellarItems.sort((a, b) =>
-          a.year.toString().localeCompare(b.year.toString())
-        );
-        return items;
-      case "yearDescending":
-        filteredCellarItems = filteredCellarItems.sort((a, b) =>
-          a.year.toString().localeCompare(b.year.toString())
-        );
-        return items.reverse();
-      case "ratingAscending":
-        filteredCellarItems = filteredCellarItems.sort((a, b) =>
-          a.rating.localeCompare(b.rating)
-        );
-        return items;
-      case "ratingDescending":
-        filteredCellarItems = filteredCellarItems.sort((a, b) =>
-          a.rating.localeCompare(b.rating)
-        );
-        return items.reverse();
-      case "quantityAscending":
-        filteredCellarItems = filteredCellarItems.sort((a, b) =>
-          a.quantity.toString().localeCompare(b.quantity.toString())
-        );
-        return items;
-      case "quantityDescending":
-        filteredCellarItems = filteredCellarItems.sort((a, b) =>
-          a.quantity.toString().localeCompare(b.quantity.toString())
-        );
-        return items.reverse();
-      default:
-        console.log("run default");
-        return items;
-    }
-  }; */
-
   return (
     <div className="cellar-overview">
       {showAddBottleModal ? <AddBottleModal toggleModal={toggleModal} /> : null}
@@ -218,7 +158,7 @@ const CellarOverview = () => {
       <div className="cellar-filters">
         <input
           type="text"
-          placeholder="Search by name, brand, year..."
+          placeholder="Search by name, brand, year, or rating"
           onChange={handleChange}
         />
         <select
