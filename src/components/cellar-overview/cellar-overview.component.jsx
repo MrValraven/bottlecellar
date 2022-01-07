@@ -13,6 +13,7 @@ const body = document.querySelector("body");
 const CellarOverview = () => {
   const cellarItems = useSelector((state) => state.cellar.cellarItems);
   const [isLoading, setIsLoading] = useState(true);
+  let filteredCellarItems = [];
 
   const [showAddBottleModal, setShowAddBottleModal] = useState(false);
   const [searchInput, setSearchInput] = useState("");
@@ -50,9 +51,16 @@ const CellarOverview = () => {
     setTimeout(() => {
       setIsLoading(!isLoading);
     }, 0);
+    filteredCellarItems = cellarItems.filter(
+      (cellarItem) =>
+        cellarItem.name.toLowerCase().includes(searchInput.toLowerCase()) ||
+        cellarItem.brand.toLowerCase().includes(searchInput.toLowerCase()) ||
+        cellarItem.year.toString().includes(searchInput) ||
+        cellarItem.rating.includes(searchInput)
+    );
   }, []);
 
-  let filteredCellarItems = cellarItems.filter(
+  filteredCellarItems = cellarItems.filter(
     (cellarItem) =>
       cellarItem.name.toLowerCase().includes(searchInput.toLowerCase()) ||
       cellarItem.brand.toLowerCase().includes(searchInput.toLowerCase()) ||
