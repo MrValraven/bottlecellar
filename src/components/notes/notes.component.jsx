@@ -3,9 +3,11 @@ import { useDispatch } from "react-redux";
 import { setItemNotes } from "../../redux/cellar/cellar.actions";
 
 import "./notes.styles.scss";
+import noteIcon from "../../assets/note.svg";
 
 import DefaultButton from "../../components/default-button/default-button.component";
 import NotesCard from "../../components/notes-card/notes-card.component";
+import NoItemsCard from "../no-items-card/no-items-card.component";
 
 const Notes = ({ currentCellarItem }) => {
   const dispatch = useDispatch();
@@ -89,14 +91,25 @@ const Notes = ({ currentCellarItem }) => {
           </div>
         </div>
       ) : null}
-      {currentCellarItem.notes.map((note, index) => (
-        <NotesCard
-          key={index}
-          note={note}
-          handleEdit={() => handleNoteEdit(index)}
-          handleDelete={() => handleNoteDeletion(index)}
+      {currentCellarItem.notes.length > 0 ? (
+        currentCellarItem.notes.map((note, index) => (
+          <NotesCard
+            key={index}
+            note={note}
+            handleEdit={() => handleNoteEdit(index)}
+            handleDelete={() => handleNoteDeletion(index)}
+          />
+        ))
+      ) : (
+        <NoItemsCard
+          icon={noteIcon}
+          iconAlt="Note"
+          text="Looks like you haven't added any notes yet."
+          buttonText="Add new note"
+          buttonIconClass="fas fa-plus"
+          clickEvent={() => setToggleNewNoteCreation(!toggleNewNoteCreation)}
         />
-      ))}
+      )}
     </div>
   );
 };

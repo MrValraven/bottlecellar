@@ -2,9 +2,11 @@ import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 
 import "./cellar-overview.styles.scss";
+import wineBottle from "../../assets/wine-bottle.svg";
 import DefaultButton from "../default-button/default-button.component";
 import AddBottleModal from "../add-bottle-modal/add-bottle-modal.component";
 import CellarItemListView from "../cellar-item-list-view/cellar-item-list-view.component";
+import NoItemsCard from "../no-items-card/no-items-card.component";
 
 const body = document.querySelector("body");
 
@@ -185,9 +187,20 @@ const CellarOverview = () => {
         </div>
       </div>
       <div className="cellar-container">
-        {sortedAndFilteredItems.map((item) => (
-          <CellarItemListView key={item.id} item={item} />
-        ))}
+        {sortedAndFilteredItems.length > 0 ? (
+          sortedAndFilteredItems.map((item) => (
+            <CellarItemListView key={item.id} item={item} />
+          ))
+        ) : (
+          <NoItemsCard
+            icon={wineBottle}
+            iconAlt="Wine bottle"
+            text="Looks like you haven't added any item yet."
+            buttonText="Add new bottle"
+            buttonIconClass="fas fa-plus"
+            clickEvent={toggleModal}
+          />
+        )}
       </div>
     </div>
   );

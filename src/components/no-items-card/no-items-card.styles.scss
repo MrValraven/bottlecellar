@@ -1,0 +1,29 @@
+.no-items-card {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px 40px;
+  max-width: 500px;
+  border-radius: 12px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+
+  img {
+    width: 75px;
+  }
+
+  p {
+    text-align: center;
+    max-width: 60%;
+    font-size: 20px;
+    margin: 20px 0;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .no-items-card {
+    p {
+      max-width: 90%;
+    }
+  }
+}

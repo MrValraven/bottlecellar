@@ -44,7 +44,7 @@ const AddBottleModal = ({ toggleModal }) => {
   return (
     <div className="add-bottle-modal-container">
       <div className="add-bottle-modal">
-        <i class="fas fa-times" onClick={toggleModal}></i>
+        <i className="fas fa-times" onClick={toggleModal}></i>
         <h1>Add new bottle</h1>
         <img src={logo} alt="logo" />
         <form onSubmit={handleSubmit}>
