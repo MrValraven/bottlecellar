@@ -16,11 +16,8 @@ const App = () => {
 
   const getCellarItemsFromLocalStorage = () => {
     const cellarItems = localStorage.getItem("cellarItems");
-    console.log("Localstorage: ", cellarItems);
 
-    if (cellarItems.length < 10) {
-      return;
-    } else if (cellarItems.length <= 0) {
+    if (cellarItems === "null") {
       return;
     }
 

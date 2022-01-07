@@ -23,6 +23,7 @@ const CellarItem = ({ currentCellarItem, history }) => {
     useState(false);
 
   const handleDeleteItem = () => {
+    window.scrollTo(0, 0);
     history.push("/user/cellar");
     dispatch(removeItem(currentCellarItem));
   };
