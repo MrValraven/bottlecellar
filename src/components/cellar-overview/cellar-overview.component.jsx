@@ -94,16 +94,16 @@ const CellarOverview = () => {
         setSortedItems(filteredCellarItems);
         break;
       case "yearAscending":
-        filteredCellarItems = filteredCellarItems.sort((a, b) =>
-          a.year.toString().localeCompare(b.year.toString())
+        filteredCellarItems = filteredCellarItems.sort(
+          (a, b) => a.year - b.year
         );
         setSortedAndFilteredItems(filteredCellarItems);
         setSortedItems(filteredCellarItems);
         break;
       case "yearDescending":
-        filteredCellarItems = filteredCellarItems
-          .sort((a, b) => a.year.toString().localeCompare(b.year.toString()))
-          .reverse();
+        filteredCellarItems = filteredCellarItems.sort(
+          (a, b) => b.year - a.year
+        );
         setSortedAndFilteredItems(filteredCellarItems);
         setSortedItems(filteredCellarItems);
         break;
@@ -122,18 +122,17 @@ const CellarOverview = () => {
         setSortedItems(filteredCellarItems);
         break;
       case "quantityAscending":
-        filteredCellarItems = filteredCellarItems.sort((a, b) =>
-          a.quantity.toString().localeCompare(b.quantity.toString())
+        filteredCellarItems = filteredCellarItems.sort(
+          (a, b) => a.quantity - b.quantity
         );
+        console.log(filteredCellarItems);
         setSortedAndFilteredItems(filteredCellarItems);
         setSortedItems(filteredCellarItems);
         break;
       case "quantityDescending":
-        filteredCellarItems = filteredCellarItems
-          .sort((a, b) =>
-            a.quantity.toString().localeCompare(b.quantity.toString())
-          )
-          .reverse();
+        filteredCellarItems = filteredCellarItems.sort(
+          (a, b) => b.quantity - a.quantity
+        );
         setSortedAndFilteredItems(filteredCellarItems);
         setSortedItems(filteredCellarItems);
         break;
