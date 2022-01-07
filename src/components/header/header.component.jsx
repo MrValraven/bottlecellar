@@ -15,10 +15,7 @@ const Header = () => {
         </Link>
       </div>
       <nav className="navbar">
-        <Link to="" className="navItem">
-          Favorites
-        </Link>
-        <Link to="/user/cellar" className="navItem">
+        <Link to="/user/cellar" className="navItem cellar">
           My Cellar
         </Link>
         <div className="user-container">

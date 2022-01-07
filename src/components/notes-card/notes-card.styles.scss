@@ -4,7 +4,6 @@
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
   display: flex;
   justify-content: space-between;
-  /*  animation: slide-down 1s cubic-bezier(0.075, 0.82, 0.165, 1) forwards; */
 
   p {
     width: 100%;
@@ -74,13 +73,3 @@
     }
   }
 }
-
-/* @keyframes slide-down {
-  0% {
-    transform: translateY(-1000px);
-  }
-
-  100% {
-    transform: translateY(0);
-  }
-} */

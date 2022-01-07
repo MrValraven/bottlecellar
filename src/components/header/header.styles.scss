@@ -6,6 +6,7 @@
 
   .logoImage {
     padding: 0 10px;
+    margin-left: -10px;
     width: 75px;
   }
 
@@ -25,9 +26,17 @@
 
       &:hover {
         cursor: pointer;
-        border-bottom: 1px solid black;
+        color: white;
+        background-color: black;
       }
     }
+
+    .cellar {
+      border-radius: 12px;
+      padding: 10px 25px;
+      box-shadow: 0 4px 3px rgba(0, 0, 0, 0.2);
+    }
+
     .user-container {
       display: flex;
       justify-content: center;

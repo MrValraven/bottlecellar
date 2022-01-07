@@ -62,7 +62,7 @@ const Notes = ({ currentCellarItem }) => {
     <div className="notes-component">
       <div className="notes-header">
         <h1 className="notes-title">Notes</h1>
-        {!toggleNewNoteCreation ? (
+        {!toggleNewNoteCreation && currentCellarItem.notes.length > 0 ? (
           <DefaultButton
             buttonText="Add new note"
             iconClass="far fa-sticky-note"
