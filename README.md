@@ -89,5 +89,5 @@ Hot reloading is enabled by default for both **JavaScript** and **SCSS** files.
 
 At the end of the landing page, you are presented two buttons that help with populate global state as an array of 20 objects or reset it, as an empty array
 
-![Image](screenshot.png)
+![Image](screenshot.jpg)
 
