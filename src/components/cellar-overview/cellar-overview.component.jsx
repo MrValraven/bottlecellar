@@ -147,12 +147,10 @@ const CellarOverview = () => {
     <div className="cellar-overview">
       {showAddBottleModal ? <AddBottleModal toggleModal={toggleModal} /> : null}
       <div className="cellar-header">
-        <h1 className="cellar-title" onClick={toggleModal}>
-          My Cellar
-        </h1>
+        <h1 className="cellar-title">My Cellar</h1>
         <DefaultButton
           buttonText="ADD NEW BOTTLE"
-          onClick={toggleModal}
+          clickEvent={toggleModal}
         ></DefaultButton>
       </div>
       <div className="cellar-filters">
