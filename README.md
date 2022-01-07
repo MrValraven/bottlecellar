@@ -104,7 +104,7 @@ The user can filter the items by:
 - Year
 - Rating
 
-You can sort the items by:
+The user can sort the items by:
 - Name (A-Z)
 - Name (Z-A)
 - Brand (A-Z)
