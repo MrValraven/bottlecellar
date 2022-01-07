@@ -1,0 +1,36 @@
+.notes-component {
+  .notes-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .note-creation {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    textarea {
+      border: none;
+      outline: none;
+      font-family: "Roboto", sans-serif;
+      margin-top: 20px;
+      margin-bottom: 15px;
+      padding: 20px 30px;
+      border-radius: 12px;
+      font-size: 18px;
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+      resize: vertical;
+    }
+
+    .textarea-button-container {
+      display: flex;
+      justify-content: flex-end;
+      align-items: flex-end;
+
+      button:first-child {
+        margin-right: 10px;
+      }
+    }
+  }
+}
