@@ -20,7 +20,7 @@ class ErrorBoundary extends React.Component {
 
   render() {
     if (this.state.hasError) {
-      <Redirect to="/user/cellar" />;
+      <Redirect to="/" />;
     }
 
     return this.props.children;
