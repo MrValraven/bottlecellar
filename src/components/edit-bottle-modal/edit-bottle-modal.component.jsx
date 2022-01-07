@@ -17,6 +17,8 @@ const EditBottleModal = ({ toggleModal, cellarItem, history, match }) => {
       editItem({
         ...cellarItem,
         ...formData,
+        name: formData.name.trim(),
+        brand: formData.brand.trim(),
         year: Math.abs(formData.year),
         price: Math.abs(formData.price).toFixed(2),
         quantity: Math.abs(formData.quantity),
