@@ -1,4 +1,6 @@
-# BottleCellar
+# BottleCellar.io
+
+![Image](home.jpg)
 
 ## Table of Contents
 1. [Requirements](#requirements)
@@ -6,6 +8,7 @@
 1. [Development](#development)
 1. [Project Structure](#project-structure)
 1. [Quickstart app with mock data](#mock-data)
+1. [How to use the app](#use-app)
 
 ## Requirements
 * node
@@ -81,13 +84,42 @@ Hot reloading is enabled by default for both **JavaScript** and **SCSS** files.
  ___├
  │
  │
- │──── App.jsx                                     # Component responsible for getting initital state, routes and global components
+ │──── App.jsx                                     # Component responsible for getting initial state from localStorage (or set a new one if empty), routes and global components
  │──── App.scss                                    # Global app styles
 ```
 
 ## Quickstart app with mock data
 
-At the end of the landing page, you are presented two buttons that help with populate global state as an array of 20 objects or reset it, as an empty array
+At the end of the landing page, you are presented two buttons that help populate global state as an array of 20 objects or reset it, as an empty array
 
 ![Image](screenshot.jpg)
+
+## How to use the app 
+
+This web app provides a clean and intuitive UI and smooth UX. At the user level you can traverse the app fairly easily and acess all features with ease.
+The user can filter the items by:
+- Name
+- Brand
+- Year
+- Rating
+
+You can sort the items by:
+- Name (A-Z)
+- Name (Z-A)
+- Brand (A-Z)
+- Brand (Z-A)
+- Year (Ascending)
+- Year (Descending)
+- Rating (Ascending)
+- Rating (Descending)
+- Quantity (Ascending)
+- Quantity (Descending)
+
+In the detailed item page the user can edit the item and it's notes and delete it or remove one of it's notes.
+
+## Developer Experience
+
+This app is developed with scalability in mind.
+Each reducer should have it's own folder as to enforce separation of concerns and provide more readable and maintanable project structure.
+Each reducer should then be imported to the root-reducer as to connect to the rest of the application.
 
