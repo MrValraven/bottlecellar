@@ -7,7 +7,7 @@ import "./cellarItemPage.styles.scss";
 import Notes from "../../components/notes/notes.component";
 import CellarItem from "../../components/cellar-item/cellar-item.component";
 
-const CellarItemPage = ({ match }) => {
+const CellarItemPage = ({ match, history }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [currentCellarItem, setCurrentCellarItem] = useState();
   useState;
@@ -35,7 +35,7 @@ const CellarItemPage = ({ match }) => {
     <div>
       {isLoading ? (
         <div className="cellar-item-page">
-          <CellarItem currentCellarItem={currentCellarItem} />
+          <CellarItem currentCellarItem={currentCellarItem} history={history} />
           <hr />
           <Notes currentCellarItem={currentCellarItem} />
         </div>

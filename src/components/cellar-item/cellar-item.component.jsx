@@ -14,10 +14,15 @@ import DefaultButton from "../../components/default-button/default-button.compon
 
 const body = document.querySelector("body");
 
-const CellarItem = ({ currentCellarItem }) => {
+const CellarItem = ({ currentCellarItem, history }) => {
   const dispatch = useDispatch();
 
   const [toggleEditModal, setToggleEditModal] = useState(false);
+
+  const handleDeleteItem = () => {
+    history.push("/user/cellar");
+    dispatch(removeItem(currentCellarItem));
+  };
 
   useEffect(() => {
     toggleEditModal
@@ -78,10 +83,7 @@ const CellarItem = ({ currentCellarItem }) => {
           <DefaultButton
             buttonText="Delete Bottle"
             iconClass="far fa-trash-alt"
-            clickEvent={() => {
-              history.push("/user/cellar");
-              dispatch(removeItem(currentCellarItem));
-            }}
+            clickEvent={handleDeleteItem}
           ></DefaultButton>
         </div>
       </div>
