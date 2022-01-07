@@ -49,7 +49,6 @@ const CellarOverview = () => {
   useEffect(() => {
     setTimeout(() => {
       setIsLoading(!isLoading);
-      console.log(isLoading);
     }, 0);
   }, []);
 
@@ -135,7 +134,6 @@ const CellarOverview = () => {
         filteredCellarItems = filteredCellarItems.sort(
           (a, b) => a.quantity - b.quantity
         );
-        console.log(filteredCellarItems);
         setSortedAndFilteredItems(filteredCellarItems);
         setSortedItems(filteredCellarItems);
         break;

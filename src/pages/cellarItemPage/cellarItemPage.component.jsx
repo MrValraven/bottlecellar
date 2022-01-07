@@ -14,7 +14,10 @@ const CellarItemPage = ({ match }) => {
 
   const currentCellarItemTemp = useSelector((state) =>
     state.cellar.cellarItems.find(
-      (cellarItem) => cellarItem.id === match.params.name
+      (cellarItem) =>
+        (cellarItem.name + " " + cellarItem.brand + " " + cellarItem.year)
+          .toLowerCase()
+          .replaceAll(" ", "-") === match.params.name
     )
   );
 

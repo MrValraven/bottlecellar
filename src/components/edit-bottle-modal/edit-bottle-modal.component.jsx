@@ -8,7 +8,7 @@ import "./edit-bottle-modal.styles.scss";
 import logo from "../../assets/wine.svg";
 import DefaultButton from "../default-button/default-button.component";
 
-const EditBottleModal = ({ toggleModal, cellarItem }) => {
+const EditBottleModal = ({ toggleModal, cellarItem, history, match }) => {
   const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
@@ -25,6 +25,17 @@ const EditBottleModal = ({ toggleModal, cellarItem }) => {
       })
     );
     toggleModal();
+    const sanitizedURL = (
+      formData.name.trim() +
+      " " +
+      formData.brand.trim() +
+      " " +
+      formData.year
+    )
+      .toLowerCase()
+      .replaceAll(" ", "-");
+    history.replace(match.url, `/user/cellar/`);
+    history.push(`/user/cellar/${sanitizedURL}`);
   };
 
   const handleChange = (e) => {
