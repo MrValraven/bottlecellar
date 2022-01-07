@@ -11,7 +11,7 @@ const Header = () => {
     <header className="app-header">
       <div className="logo">
         <Link to="/">
-          <img src={logo} alt="" />
+          <img src={logo} alt="" className="logoImage" />
         </Link>
       </div>
       <nav className="navbar">
@@ -22,11 +22,7 @@ const Header = () => {
           My Cellar
         </Link>
         <div className="user-container">
-          <img
-            src={user}
-            alt="user"
-            onClick={() => setIsLoggedIn(!isLoggedIn)}
-          />
+          <img src={user} alt="user" />
         </div>
       </nav>
     </header>

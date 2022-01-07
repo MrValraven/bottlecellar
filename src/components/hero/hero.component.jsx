@@ -14,14 +14,11 @@ const Hero = () => (
         The best cellar tracking app for all your wine and beer needs!
         <br />
         We use state of the art technology to enhance your tracking experience!
-        All in one streamlined platform
+        All in one streamlined platform.
       </p>
       <Link className="heroButton" to="user/cellar">
         Get Started ➡
       </Link>
-      <div className="line-going-down">
-        <div className="arrow-pointer"></div>
-      </div>
     </div>
     <div className="heroImage">
       <img src={heroImage} alt="wine bottles" />
