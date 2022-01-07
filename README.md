@@ -62,7 +62,7 @@ Hot reloading is enabled by default for both **JavaScript** and **SCSS** files.
     ├── components                                # Global reusable components
     │   └── component-name
     │       ├── component-name.styles.scss        # Your component styles 
-    │       ├── component-name.component.jsx      # Pure component source code (easily tested)
+    │       ├── component-name.component.jsx      # Pure component source code
     │
     ├── pages                                     # Components that represent each available routes
     │   └── component-name
