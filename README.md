@@ -9,6 +9,7 @@
 1. [Project Structure](#project-structure)
 1. [Quickstart app with mock data](#mock-data)
 1. [How to use the app](#use-app)
+1. [Developer Experience](#developer-experience)
 
 ## Requirements
 * Node
@@ -46,7 +47,7 @@ Hot reloading is enabled by default for both **JavaScript** and **SCSS** files.
 |----------------------|-----------|
 |`dev`            	   |Serves your app at [localhost:3000](http://localhost:3000)|
 |`build`               |Builds the application to ./dist folder|
-|`preview`             |Locally preview production build at [localhost:5000](http://localhost:5000)|
+|`preview`             |Locally preview production build at [localhost:3000](http://localhost:3000)|
 
 ## Project Structure
 
