@@ -13,14 +13,26 @@
   z-index: 50;
 
   .add-bottle-modal {
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
     background-color: white;
     width: 350px;
-    padding: 20px;
+    padding: 40px 20px 20px 20px;
     border-radius: 12px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+
+    .fa-times {
+      position: absolute;
+      top: 20px;
+      right: 25px;
+      font-size: 20px;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
 
     h1 {
       margin-bottom: 10px;
