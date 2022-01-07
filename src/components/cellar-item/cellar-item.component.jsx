@@ -11,6 +11,7 @@ import "./cellar-item.styles.scss";
 import defaultWineImage from "../../assets/wine-details.png";
 import EditBottleModal from "../../components/edit-bottle-modal/edit-bottle-modal.component";
 import DefaultButton from "../../components/default-button/default-button.component";
+import ConfirmDeleteModal from "../confirm-delete-modal/confirm-delete-modal.component";
 
 const body = document.querySelector("body");
 
@@ -18,6 +19,8 @@ const CellarItem = ({ currentCellarItem, history }) => {
   const dispatch = useDispatch();
 
   const [toggleEditModal, setToggleEditModal] = useState(false);
+  const [toggleConfirmDeleteModal, setToggleConfirmDeleteModal] =
+    useState(false);
 
   const handleDeleteItem = () => {
     history.push("/user/cellar");
@@ -25,10 +28,10 @@ const CellarItem = ({ currentCellarItem, history }) => {
   };
 
   useEffect(() => {
-    toggleEditModal
+    toggleEditModal || toggleConfirmDeleteModal
       ? body.classList.add("modalIsToggled")
       : body.classList.remove("modalIsToggled");
-  }, [toggleEditModal]);
+  }, [toggleEditModal, toggleConfirmDeleteModal]);
 
   const decrementQuantity = () => {
     if (currentCellarItem.quantity <= 0) {
@@ -43,6 +46,14 @@ const CellarItem = ({ currentCellarItem, history }) => {
         <EditBottleModal
           toggleModal={() => setToggleEditModal(!toggleEditModal)}
           cellarItem={currentCellarItem}
+        />
+      ) : null}
+      {toggleConfirmDeleteModal ? (
+        <ConfirmDeleteModal
+          clickEvent={handleDeleteItem}
+          toggleModal={() =>
+            setToggleConfirmDeleteModal(!toggleConfirmDeleteModal)
+          }
         />
       ) : null}
       <img src={defaultWineImage} alt="wine photo" />
@@ -83,7 +94,9 @@ const CellarItem = ({ currentCellarItem, history }) => {
           <DefaultButton
             buttonText="Delete Bottle"
             iconClass="far fa-trash-alt"
-            clickEvent={handleDeleteItem}
+            clickEvent={() =>
+              setToggleConfirmDeleteModal(!toggleConfirmDeleteModal)
+            }
           ></DefaultButton>
         </div>
       </div>
