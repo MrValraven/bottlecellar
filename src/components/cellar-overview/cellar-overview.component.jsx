@@ -152,6 +152,7 @@ const CellarOverview = () => {
         <h1 className="cellar-title">My Cellar</h1>
         <DefaultButton
           buttonText="ADD NEW BOTTLE"
+          iconClass="fas fa-plus"
           clickEvent={toggleModal}
         ></DefaultButton>
       </div>
