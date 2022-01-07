@@ -18,6 +18,7 @@ const App = () => {
     const cellarItems = localStorage.getItem("cellarItems");
 
     if (cellarItems === "null") {
+      dispatch(setCellarItems([]));
       return;
     }
 

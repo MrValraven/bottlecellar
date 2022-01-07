@@ -150,12 +150,14 @@ const CellarOverview = () => {
       {showAddBottleModal ? <AddBottleModal toggleModal={toggleModal} /> : null}
       <div className="cellar-header">
         <h1 className="cellar-title">My Cellar</h1>
-        <DefaultButton
-          additionalClass="headerButton"
-          buttonText="ADD NEW BOTTLE"
-          iconClass="fas fa-plus"
-          clickEvent={toggleModal}
-        ></DefaultButton>
+        {sortedAndFilteredItems.length > 0 ? (
+          <DefaultButton
+            additionalClass="headerButton"
+            buttonText="ADD NEW BOTTLE"
+            iconClass="fas fa-plus"
+            clickEvent={toggleModal}
+          />
+        ) : null}
       </div>
       <div className="cellar-filters">
         <div className="input-container">
@@ -188,12 +190,14 @@ const CellarOverview = () => {
             </select>
             <i className="fas fa-chevron-down"></i>
           </div>
-          <DefaultButton
-            additionalClass="mobileButton"
-            buttonText="ADD NEW BOTTLE"
-            iconClass="fas fa-plus"
-            clickEvent={toggleModal}
-          ></DefaultButton>
+          {sortedAndFilteredItems.length > 0 ? (
+            <DefaultButton
+              additionalClass="mobileButton"
+              buttonText="ADD NEW BOTTLE"
+              iconClass="fas fa-plus"
+              clickEvent={toggleModal}
+            />
+          ) : null}
         </div>
       </div>
       <div className="cellar-container">

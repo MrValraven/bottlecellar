@@ -96,3 +96,9 @@
     }
   }
 }
+
+@media screen and (max-height: 800px) {
+  .demo-container {
+    padding-top: 300px;
+  }
+}
