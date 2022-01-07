@@ -30,7 +30,7 @@ const MOCK_DATA = [
     price: 2.89,
     quantity: 10,
     rating: "2",
-    notes: ["Para o preço que tem podia ser melhor"],
+    notes: ["Tem uma boa relação qualidade preço, Bom para oferecer no Natal"],
     id: "1a7ae20d-5141-4bd9-afa0-jfidreg35rt",
   },
   {
@@ -80,7 +80,7 @@ const MOCK_DATA = [
     price: 9.99,
     quantity: 2,
     rating: "4",
-    notes: [],
+    notes: ["Ótimo para comer com assados"],
     id: "1a7ae20d-5141-4bd9-afa0-jfidgg24g3",
   },
   {
@@ -100,7 +100,7 @@ const MOCK_DATA = [
     price: 1.99,
     quantity: 1,
     rating: "5",
-    notes: [],
+    notes: ["Decente para comer com peixe ou saladas"],
     id: "1a7ae20d-5141-4bd9-afa0-jfiderg4e",
   },
   {
