@@ -12,6 +12,7 @@ const body = document.querySelector("body");
 
 const CellarOverview = () => {
   const cellarItems = useSelector((state) => state.cellar.cellarItems);
+  const [isLoading, setIsLoading] = useState(true);
 
   const [showAddBottleModal, setShowAddBottleModal] = useState(false);
   const [searchInput, setSearchInput] = useState("");
@@ -44,6 +45,13 @@ const CellarOverview = () => {
       body.classList.remove("modalIsToggled");
     }
   }, [showAddBottleModal]);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setIsLoading(!isLoading);
+      console.log(isLoading);
+    }, 0);
+  }, []);
 
   let filteredCellarItems = cellarItems.filter(
     (cellarItem) =>
@@ -146,76 +154,82 @@ const CellarOverview = () => {
   }, [sortingOption]);
 
   return (
-    <div className="cellar-overview">
-      {showAddBottleModal ? <AddBottleModal toggleModal={toggleModal} /> : null}
-      <div className="cellar-header">
-        <h1 className="cellar-title">My Cellar</h1>
-        {sortedAndFilteredItems.length > 0 ? (
-          <DefaultButton
-            additionalClass="headerButton"
-            buttonText="ADD NEW BOTTLE"
-            iconClass="fas fa-plus"
-            clickEvent={toggleModal}
-          />
-        ) : null}
-      </div>
-      <div className="cellar-filters">
-        <div className="input-container">
-          <input
-            type="text"
-            placeholder="Search by name, brand, year, or rating"
-            onChange={handleChange}
-          />
-          <i className="fas fa-search"></i>
-        </div>
-        <div className="mobileContainer">
-          <div className="select-container">
-            <select
-              name="filterBy"
-              id="filterBy"
-              value={sortingOption}
-              onChange={(e) => handleFilterChange(e)}
-            >
-              <option value="No filter">No filter</option>
-              <option value="nameA-Z">Name (A-Z)</option>
-              <option value="nameZ-A">Name (Z-A)</option>
-              <option value="brandA-Z">Brand (A-Z)</option>
-              <option value="brandZ-A">Brand (Z-A)</option>
-              <option value="yearAscending">Year (Asc)</option>
-              <option value="yearDescending">Year (Desc)</option>
-              <option value="ratingAscending">Rating (Asc)</option>
-              <option value="ratingDescending">Rating (Desc)</option>
-              <option value="quantityAscending">Quantity (Asc)</option>
-              <option value="quantityDescending">Quantity (Desc)</option>
-            </select>
-            <i className="fas fa-chevron-down"></i>
-          </div>
-          {sortedAndFilteredItems.length > 0 ? (
-            <DefaultButton
-              additionalClass="mobileButton"
-              buttonText="ADD NEW BOTTLE"
-              iconClass="fas fa-plus"
-              clickEvent={toggleModal}
-            />
+    <div className="loading-div">
+      {!isLoading ? (
+        <div className="cellar-overview">
+          {showAddBottleModal ? (
+            <AddBottleModal toggleModal={toggleModal} />
           ) : null}
+          <div className="cellar-header">
+            <h1 className="cellar-title">My Cellar</h1>
+            {sortedAndFilteredItems.length > 0 ? (
+              <DefaultButton
+                additionalClass="headerButton"
+                buttonText="ADD NEW BOTTLE"
+                iconClass="fas fa-plus"
+                clickEvent={toggleModal}
+              />
+            ) : null}
+          </div>
+          <div className="cellar-filters">
+            <div className="input-container">
+              <input
+                type="text"
+                placeholder="Search by name, brand, year, or rating"
+                onChange={handleChange}
+              />
+              <i className="fas fa-search"></i>
+            </div>
+            <div className="mobileContainer">
+              <div className="select-container">
+                <select
+                  name="filterBy"
+                  id="filterBy"
+                  value={sortingOption}
+                  onChange={(e) => handleFilterChange(e)}
+                >
+                  <option value="No filter">No filter</option>
+                  <option value="nameA-Z">Name (A-Z)</option>
+                  <option value="nameZ-A">Name (Z-A)</option>
+                  <option value="brandA-Z">Brand (A-Z)</option>
+                  <option value="brandZ-A">Brand (Z-A)</option>
+                  <option value="yearAscending">Year (Asc)</option>
+                  <option value="yearDescending">Year (Desc)</option>
+                  <option value="ratingAscending">Rating (Asc)</option>
+                  <option value="ratingDescending">Rating (Desc)</option>
+                  <option value="quantityAscending">Quantity (Asc)</option>
+                  <option value="quantityDescending">Quantity (Desc)</option>
+                </select>
+                <i className="fas fa-chevron-down"></i>
+              </div>
+              {sortedAndFilteredItems.length > 0 ? (
+                <DefaultButton
+                  additionalClass="mobileButton"
+                  buttonText="ADD NEW BOTTLE"
+                  iconClass="fas fa-plus"
+                  clickEvent={toggleModal}
+                />
+              ) : null}
+            </div>
+          </div>
+          <div className="cellar-container">
+            {sortedAndFilteredItems.length > 0 ? (
+              sortedAndFilteredItems.map((item) => (
+                <CellarItemListView key={item.id} item={item} />
+              ))
+            ) : (
+              <NoItemsCard
+                icon={wineBottle}
+                iconAlt="Wine bottle"
+                text="Looks like you haven't added any item yet."
+                buttonText="Add new bottle"
+                buttonIconClass="fas fa-plus"
+                clickEvent={toggleModal}
+              />
+            )}
+          </div>
         </div>
-      </div>
-      <div className="cellar-container">
-        {sortedAndFilteredItems.length > 0 ? (
-          sortedAndFilteredItems.map((item) => (
-            <CellarItemListView key={item.id} item={item} />
-          ))
-        ) : (
-          <NoItemsCard
-            icon={wineBottle}
-            iconAlt="Wine bottle"
-            text="Looks like you haven't added any item yet."
-            buttonText="Add new bottle"
-            buttonIconClass="fas fa-plus"
-            clickEvent={toggleModal}
-          />
-        )}
-      </div>
+      ) : null}
     </div>
   );
 };

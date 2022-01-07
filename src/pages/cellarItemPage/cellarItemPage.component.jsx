@@ -7,17 +7,14 @@ import "./cellarItemPage.styles.scss";
 import Notes from "../../components/notes/notes.component";
 import CellarItem from "../../components/cellar-item/cellar-item.component";
 
-const CellarItemPage = ({ match, history }) => {
+const CellarItemPage = ({ match }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [currentCellarItem, setCurrentCellarItem] = useState();
   useState;
 
   const currentCellarItemTemp = useSelector((state) =>
     state.cellar.cellarItems.find(
-      (cellarItem) =>
-        (cellarItem.name + " " + cellarItem.brand + " " + cellarItem.year)
-          .toLowerCase()
-          .replaceAll(" ", "-") === match.params.name
+      (cellarItem) => cellarItem.id === match.params.name
     )
   );
 
@@ -35,7 +32,7 @@ const CellarItemPage = ({ match, history }) => {
     <div>
       {isLoading ? (
         <div className="cellar-item-page">
-          <CellarItem currentCellarItem={currentCellarItem} history={history} />
+          <CellarItem currentCellarItem={currentCellarItem} />
           <hr />
           <Notes currentCellarItem={currentCellarItem} />
         </div>
