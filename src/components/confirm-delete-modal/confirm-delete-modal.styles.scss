@@ -23,6 +23,7 @@
     background-color: white;
     border-radius: 12px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+    animation: slide-and-fade-up 0.5s cubic-bezier(0.075, 0.82, 0.165, 1) both;
 
     img {
       width: 75px;
@@ -43,5 +44,16 @@
       text-align: center;
       margin: 25px 0;
     }
+  }
+}
+
+@keyframes slide-and-fade-up {
+  0% {
+    opacity: 0;
+    transform: translateY(200px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0px);
   }
 }
