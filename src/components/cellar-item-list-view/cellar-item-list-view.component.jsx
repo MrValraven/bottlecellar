@@ -25,7 +25,7 @@ const CellarItemListView = ({ item, history, match }) => {
               {brand}, {year}
             </p>
           </div>
-          <p>This item has {notes.length} notes</p>
+          <p className="notes">This item has {notes.length} notes</p>
         </div>
         <div className="ratings">
           <p className="price">{price}€</p>

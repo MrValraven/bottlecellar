@@ -65,11 +65,47 @@
 
   .cellar-container {
     display: grid;
+  }
+}
 
-    .toggle {
-      padding: 20px;
-      margin: 10px;
-      border: 1px solid red;
+.mobileButton {
+  display: none;
+}
+
+@media screen and(max-width: 650px) {
+  .cellar-overview {
+    .cellar-header .headerButton {
+      display: none;
     }
+    .cellar-filters {
+      flex-direction: column;
+
+      .input-container {
+        width: 100%;
+        input {
+          width: 100%;
+        }
+      }
+
+      .select-container {
+        width: 100%;
+        margin: 0;
+        select {
+          padding-left: 20px;
+          width: 100%;
+        }
+
+        .mobileContainer {
+          display: flex;
+          justify-content: center;
+        }
+      }
+    }
+  }
+  .mobileButton {
+    display: block;
+    width: 50%;
+    align-self: flex-end;
+    margin: 15px auto;
   }
 }

@@ -76,3 +76,143 @@
     }
   }
 }
+
+@media screen and (max-width: 850px) {
+  .cellar-item-list-view {
+    height: 200px;
+
+    .information {
+      padding-top: 10px;
+
+      .generalInfo {
+        .nameAndBrand {
+          h1 {
+            font-size: 25px;
+          }
+        }
+      }
+
+      .ratings {
+        padding-top: 0;
+      }
+    }
+
+    .bottlesAvailable {
+      span {
+        font-size: 20px;
+      }
+      img {
+        height: 35px;
+      }
+    }
+  }
+}
+@media screen and (max-width: 650px) {
+  .cellar-item-list-view {
+    .information {
+      padding-top: 10px;
+      flex-direction: column;
+
+      .generalInfo {
+        .notes {
+          display: none;
+        }
+      }
+
+      .ratings {
+        justify-content: flex-end;
+
+        .price {
+          display: none;
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 530px) {
+  .cellar-item-list-view {
+    flex-direction: column;
+    max-height: 400px;
+    height: 500px;
+    padding: 20px 0px 0 0px;
+
+    .mainPicture {
+      height: 60%;
+      padding: 0;
+    }
+    .information {
+      padding: 10px;
+      flex-direction: row;
+
+      .generalInfo {
+        .notes {
+          display: none;
+        }
+      }
+
+      .ratings {
+        justify-content: flex-start;
+        margin-top: 5px;
+        border-top-right-radius: 0;
+      }
+    }
+
+    .bottlesAvailable {
+      flex-direction: row;
+      padding: 10px 0;
+      justify-content: center;
+
+      span {
+        margin-top: 2px;
+      }
+
+      img {
+        margin-left: 25px;
+      }
+    }
+  }
+}
+@media screen and (max-width: 350px) {
+  .cellar-item-list-view {
+    flex-direction: column;
+    height: 500px;
+    padding: 20px 0px 0 0px;
+
+    .mainPicture {
+      height: 50%;
+      padding: 0;
+    }
+    .information {
+      padding: 10px;
+      flex-direction: column;
+
+      .generalInfo {
+        .notes {
+          display: none;
+        }
+      }
+
+      .ratings {
+        justify-content: flex-start;
+        margin-top: 5px;
+        border-top-right-radius: 0;
+        align-items: flex-start;
+        padding: 0;
+      }
+    }
+
+    .bottlesAvailable {
+      flex-direction: row;
+      padding: 10px 0;
+      justify-content: center;
+
+      span {
+        margin-top: 2px;
+      }
+
+      img {
+        margin-left: 25px;
+      }
+    }
+  }
+}
