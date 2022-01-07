@@ -7,6 +7,7 @@ import Header from "./components/header/header.component";
 import Homepage from "./pages/homepage/homepage.component";
 import CellarPage from "./pages/cellarpage/cellar.component";
 import CellarItemPage from "./pages/cellarItemPage/cellarItemPage.component";
+import Footer from "./components/footer/footer.component";
 
 import "./App.scss";
 
@@ -38,6 +39,7 @@ const App = () => {
         <Route exact path="/user/cellar" component={CellarPage} />
         <Route path="/user/cellar/:name" component={CellarItemPage} />
       </Switch>
+      <Footer />
     </div>
   );
 };

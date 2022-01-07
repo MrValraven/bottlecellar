@@ -1,18 +1,19 @@
 .app {
-  padding: 20px 350px 0px 350px;
+  position: relative;
+  padding: 20px 350px 150px 350px;
   background-color: #faf6f3;
   min-height: 100vh;
 }
 
 @media screen and (max-width: 1800px) {
   .app {
-    padding: 20px 250px 0px 250px;
+    padding: 20px 250px 150px 250px;
   }
 }
 
 @media screen and (max-width: 1550px) {
   .app {
-    padding: 20px 150px 0px 150px;
+    padding: 20px 150px 150px 150px;
   }
 }
 @media screen and (max-width: 1375px) {
@@ -23,16 +24,16 @@
 
 @media screen and (max-width: 1200px) {
   .app {
-    padding: 20px 50px 0px 50px;
+    padding: 20px 50px 150px 50px;
   }
 }
 @media screen and (max-width: 900px) {
   .app {
-    padding: 25px 25px 0px 25px;
+    padding: 25px 25px 150px 25px;
   }
 }
 @media screen and (max-width: 500px) {
   .app {
-    padding: 10px 10px 0px 10px;
+    padding: 10px 10px 150px 10px;
   }
 }
