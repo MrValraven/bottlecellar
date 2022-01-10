@@ -9,13 +9,14 @@
 1. [Project Structure](#project-structure)
 1. [Quickstart app with mock data](#mock-data)
 1. [How to use the app](#use-app)
+1. [Developer Experience](#developer-experience)
 
 ## Requirements
-* node
+* Node
 
 ## Installation
 
-After confirming that your environment meets the above [requirements](#requirements), you can create a new project based on `cellar` by doing the following:
+After confirming that your environment meets the above [requirements](#requirements), you can create a new project based on `BottleCellar` by doing the following:
 
 ```bash
 $ git clone https://github.com/MrValraven/cellar-tiagocosta.git <my-project-name>
@@ -46,7 +47,7 @@ Hot reloading is enabled by default for both **JavaScript** and **SCSS** files.
 |----------------------|-----------|
 |`dev`            	   |Serves your app at [localhost:3000](http://localhost:3000)|
 |`build`               |Builds the application to ./dist folder|
-|`preview`             |Locally preview production build at [localhost:5000](http://localhost:5000)|
+|`preview`             |Locally preview production build at [localhost:3000](http://localhost:3000)|
 
 ## Project Structure
 
@@ -61,7 +62,7 @@ Hot reloading is enabled by default for both **JavaScript** and **SCSS** files.
     ├── components                                # Global reusable components
     │   └── component-name
     │       ├── component-name.styles.scss        # Your component styles 
-    │       ├── component-name.component.jsx      # Pure component source code (easily tested)
+    │       ├── component-name.component.jsx      # Pure component source code
     │
     ├── pages                                     # Components that represent each available routes
     │   └── component-name
@@ -103,7 +104,7 @@ The user can filter the items by:
 - Year
 - Rating
 
-You can sort the items by:
+The user can sort the items by:
 - Name (A-Z)
 - Name (Z-A)
 - Brand (A-Z)
