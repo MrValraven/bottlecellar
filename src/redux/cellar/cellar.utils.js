@@ -14,7 +14,7 @@ export const addItemToCellar = (cellarItems, itemToAdd) => {
     return cellarItems;
   }
 
-  return [...cellarItems, { ...itemToAdd, id: uuidv4() }];
+  return [...cellarItems, { ...itemToAdd, id: uuidv4(), notes: [] }];
 };
 
 export const editItemFromCellar = (cellarItems, itemToEdit) => {
