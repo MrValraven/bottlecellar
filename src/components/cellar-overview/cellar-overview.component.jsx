@@ -112,7 +112,6 @@ const CellarOverview = () => {
 
   useEffect(() => {
     setSortedAndFilteredItems(cellarItems);
-    setSortedItems(cellarItems);
   }, [cellarItems]);
 
   useEffect(() => {
