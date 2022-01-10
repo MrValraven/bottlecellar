@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { withRouter } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import {
   decrementItemQuantity,
@@ -71,9 +72,11 @@ const CellarItem = ({ currentCellarItem, history }) => {
         </p>
         <p className="price">{currentCellarItem.price}€</p>
         <p className="description">
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Minus
-          doloremque et ad dolore cupiditate officiis unde voluptas velit
-          assumenda reprehenderit.
+          The grapes are hand-selected separately, the fermentation is in
+          frustoconical vats with delestage. Ageing for 9 months in Frenck oak
+          barrels. Deep, concentrated plummy-red tones. Complex aroma of
+          well-ripped red fruits. Full-flavoured, concentrated and with a long
+          aftertaste.
         </p>
         <p className="quantity">
           <span>Quantity:</span>
@@ -105,4 +108,4 @@ const CellarItem = ({ currentCellarItem, history }) => {
   );
 };
 
-export default CellarItem;
+export default withRouter(CellarItem);
