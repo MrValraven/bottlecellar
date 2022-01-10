@@ -9,8 +9,8 @@ export const addItemToCellar = (cellarItems, itemToAdd) => {
   );
 
   if (isItemAlreadyInCellar) {
-    //Throw erro porque ja existe
-    console.log("item already exists");
+    //Throw error because item already exists in cellar
+    console.error("Item already exists");
     return cellarItems;
   }
 
