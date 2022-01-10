@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { editItem, addItem } from "../../redux/cellar/cellar.actions";
 
+import "./modal-form.styles.scss";
+
 import DefaultButton from "../default-button/default-button.component";
 
 const ModalForm = ({ cellarItem, toggleModal, buttonText, formActionType }) => {
