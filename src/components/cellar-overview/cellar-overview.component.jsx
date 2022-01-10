@@ -31,7 +31,6 @@ const CellarOverview = () => {
   ]);
 
   const filterItemsBySearchInput = (itemsArray) => {
-    console.log(itemsArray);
     return itemsArray.filter(
       (item) =>
         item.name.toLowerCase().includes(searchInput.toLowerCase()) ||
@@ -132,9 +131,7 @@ const CellarOverview = () => {
   }, []);
 
   useEffect(() => {
-    console.log(cellarItems);
     if (cellarItems === null) {
-      console.log("not null anymore");
       cellarItems = [];
     } else if (searchInput && cellarItems.length > 0) {
       setSortedAndFilteredItems(filterItemsBySearchInput(cellarItems));
@@ -234,7 +231,7 @@ const CellarOverview = () => {
               <NoItemsCard
                 icon={wineBottle}
                 iconAlt="Wine bottle"
-                text="Looks like you haven't added any item yet."
+                text="Looks like you haven't added any items yet."
                 buttonText="Add new bottle"
                 buttonIconClass="fas fa-plus"
                 clickEvent={toggleModal}
