@@ -1,6 +1,9 @@
 import { v4 as uuidv4 } from "uuid";
 
 export const addItemToCellar = (cellarItems, itemToAdd) => {
+  if (cellarItems === null) {
+    cellarItems = [];
+  }
   const isItemAlreadyInCellar = cellarItems.find(
     (item) =>
       item.name === itemToAdd.name &&

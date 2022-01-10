@@ -11,7 +11,7 @@ import NoItemsCard from "../no-items-card/no-items-card.component";
 const body = document.querySelector("body");
 
 const CellarOverview = () => {
-  const cellarItems = useSelector((state) => state.cellar.cellarItems);
+  let cellarItems = useSelector((state) => state.cellar.cellarItems);
   const [isLoading, setIsLoading] = useState(true);
 
   const [showAddBottleModal, setShowAddBottleModal] = useState(false);
@@ -31,6 +31,7 @@ const CellarOverview = () => {
   ]);
 
   const filterItemsBySearchInput = (itemsArray) => {
+    console.log(itemsArray);
     return itemsArray.filter(
       (item) =>
         item.name.toLowerCase().includes(searchInput.toLowerCase()) ||
@@ -41,6 +42,8 @@ const CellarOverview = () => {
   };
 
   const sortItemsBySortingOption = (sortingOption, itemsArray) => {
+    if (sortingOption === null || itemsArray === null) return null;
+
     let filteredCellarItems = [];
 
     switch (sortingOption) {
@@ -129,7 +132,11 @@ const CellarOverview = () => {
   }, []);
 
   useEffect(() => {
-    if (searchInput && cellarItems.length > 0) {
+    console.log(cellarItems);
+    if (cellarItems === null) {
+      console.log("not null anymore");
+      cellarItems = [];
+    } else if (searchInput && cellarItems.length > 0) {
       setSortedAndFilteredItems(filterItemsBySearchInput(cellarItems));
     } else {
       setSortedAndFilteredItems(cellarItems);
