@@ -8,9 +8,7 @@ import logo from "../../assets/wine.svg";
 const CellarItemListView = ({ item, history, match }) => {
   const { name, brand, year, price, quantity, notes, rating } = item;
   const goToItemPage = () => {
-    const cellarItemName = (name + " " + brand + " " + year)
-      .replaceAll(" ", "-")
-      .toLowerCase();
+    const cellarItemName = item.id;
     history.push(`${match.url}/${cellarItemName}`);
   };
 
