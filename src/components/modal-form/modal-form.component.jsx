@@ -47,7 +47,7 @@ const ModalForm = ({ cellarItem, toggleModal, buttonText, formActionType }) => {
   };
 
   return (
-    <form onSubmit={(e) => handleSubmit(e)}>
+    <form className="modal-form" onSubmit={(e) => handleSubmit(e)}>
       <label name="name">Name *</label>
       <input
         type="text"

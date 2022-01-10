@@ -5,6 +5,7 @@ import "./cellar-overview.styles.scss";
 import wineBottle from "../../assets/wine-bottle.svg";
 import DefaultButton from "../default-button/default-button.component";
 import AddBottleModal from "../add-bottle-modal/add-bottle-modal.component";
+import Modal from "../modal/modal.component";
 import CellarItemListView from "../cellar-item-list-view/cellar-item-list-view.component";
 import NoItemsCard from "../no-items-card/no-items-card.component";
 
@@ -147,7 +148,20 @@ const CellarOverview = () => {
       {!isLoading ? (
         <div className="cellar-overview">
           {showAddBottleModal ? (
-            <AddBottleModal toggleModal={toggleModal} />
+            <Modal
+              toggleModal={toggleModal}
+              modalHeaderText="Add new bottle"
+              modalButtonText="Add bottle"
+              formActionType="add"
+              cellarItem={{
+                name: "",
+                brand: "",
+                year: "",
+                price: "",
+                quantity: "",
+                rating: "1",
+              }}
+            />
           ) : null}
           <div className="cellar-header">
             <h1 className="cellar-title">My Cellar</h1>

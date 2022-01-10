@@ -10,7 +10,7 @@ import {
 import "./cellar-item.styles.scss";
 
 import defaultWineImage from "../../assets/wine-details.png";
-import EditBottleModal from "../../components/edit-bottle-modal/edit-bottle-modal.component";
+import Modal from "../modal/modal.component";
 import DefaultButton from "../../components/default-button/default-button.component";
 import ConfirmDeleteModal from "../confirm-delete-modal/confirm-delete-modal.component";
 
@@ -45,8 +45,11 @@ const CellarItem = ({ currentCellarItem, history }) => {
   return (
     <div className="cellar-item-main">
       {toggleEditModal ? (
-        <EditBottleModal
+        <Modal
           toggleModal={() => setToggleEditModal(!toggleEditModal)}
+          modalHeaderText="Edit bottle"
+          modalButtonText="Save changes"
+          formActionType="edit"
           cellarItem={currentCellarItem}
         />
       ) : null}

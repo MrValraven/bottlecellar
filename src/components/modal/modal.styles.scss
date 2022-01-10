@@ -1,4 +1,4 @@
-.add-bottle-modal-container {
+.modal-container {
   position: fixed;
   display: flex;
   justify-content: center;
@@ -12,7 +12,7 @@
   -webkit-backdrop-filter: blur(5px);
   z-index: 50;
 
-  .add-bottle-modal {
+  .modal {
     position: relative;
     display: flex;
     flex-direction: column;
@@ -42,36 +42,6 @@
 
     img {
       width: 35%;
-    }
-
-    form {
-      display: flex;
-      flex-direction: column;
-
-      width: 100%;
-
-      label {
-        font-weight: bold;
-        margin-bottom: 5px;
-        font-size: 18px;
-        padding-left: 5px;
-      }
-
-      input,
-      select {
-        padding: 10px 10px;
-        margin-bottom: 10px;
-        font-size: 18px;
-        border-radius: 12px;
-        border: none;
-        outline: none;
-        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
-      }
-
-      button {
-        margin-top: 5px;
-        align-self: center;
-      }
     }
   }
 }
