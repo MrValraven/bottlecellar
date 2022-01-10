@@ -19,9 +19,6 @@ const ModalForm = ({ cellarItem, toggleModal, buttonText, formActionType }) => {
   });
 
   const handleChange = (e) => {
-    if (e.target.name === "price") {
-      e.target.value = Number(e.target.value).toFixed(2);
-    }
     setFormData((previousState) => ({
       ...previousState,
       [e.target.name]: e.target.value,
@@ -30,6 +27,7 @@ const ModalForm = ({ cellarItem, toggleModal, buttonText, formActionType }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
     setFormData({
       name: formData.name.trim(),
       brand: formData.brand.trim(),
