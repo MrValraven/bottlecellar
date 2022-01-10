@@ -30,8 +30,6 @@ const CellarOverview = () => {
     },
   ]);
 
-  const [sortedItems, setSortedItems] = useState([]);
-
   const filterItemsBySearchInput = (itemsArray) => {
     return itemsArray.filter(
       (item) =>
@@ -133,7 +131,6 @@ const CellarOverview = () => {
 
   useEffect(() => {
     if (searchInput && cellarItems.length > 0) {
-      console.log("filter: ", filterItemsBySearchInput(cellarItems));
       setSortedAndFilteredItems(filterItemsBySearchInput(cellarItems));
     } else {
       setSortedAndFilteredItems(cellarItems);
