@@ -36,7 +36,7 @@ export const editItemFromCellar = (cellarItems, itemToEdit) => {
     );
   }
 
-  console.log("Error, item doesn't exist");
+  console.error("Error, item not found");
 };
 
 export const removeItemFromCellar = (cellarItems, itemToRemove) => {
@@ -48,7 +48,7 @@ export const removeItemFromCellar = (cellarItems, itemToRemove) => {
     return cellarItems.filter((item) => item.id !== itemToRemove.id);
   }
 
-  console.log("error, item not found");
+  console.error("Error, item not found");
 };
 
 export const incrementItemQuantity = (cellarItems, itemToModify) => {
@@ -67,7 +67,7 @@ export const incrementItemQuantity = (cellarItems, itemToModify) => {
     );
   }
 
-  console.log("Item doesn't exist");
+  console.error("Item not found");
 };
 export const decrementItemQuantity = (cellarItems, itemToModify) => {
   const isItemInCellar = cellarItems.find(
@@ -89,7 +89,7 @@ export const decrementItemQuantity = (cellarItems, itemToModify) => {
     );
   }
 
-  console.log("Item doesn't exist");
+  console.error("Item not found");
 };
 
 export const setItemNotes = (cellarItems, itemToModify) => {
@@ -108,5 +108,5 @@ export const setItemNotes = (cellarItems, itemToModify) => {
     );
   }
 
-  console.log("Item doesn't exist");
+  console.error("Item not found");
 };
