@@ -4,7 +4,6 @@ import { useSelector } from "react-redux";
 import "./cellar-overview.styles.scss";
 import wineBottle from "../../assets/wine-bottle.svg";
 import DefaultButton from "../default-button/default-button.component";
-import AddBottleModal from "../add-bottle-modal/add-bottle-modal.component";
 import Modal from "../modal/modal.component";
 import CellarItemListView from "../cellar-item-list-view/cellar-item-list-view.component";
 import NoItemsCard from "../no-items-card/no-items-card.component";

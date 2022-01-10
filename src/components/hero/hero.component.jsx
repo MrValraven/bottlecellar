@@ -1,14 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { setCellarItems } from "../../redux/cellar/cellar.actions";
 
 import heroImage from "../../assets/wine3.png";
 
 import "./hero.styles.scss";
 
 const Hero = () => {
-  const dispatch = useDispatch();
   return (
     <div className="hero">
       <div className="heroText">
@@ -20,13 +17,7 @@ const Hero = () => {
           We use state of the art technology to enhance your tracking
           experience! All in one streamlined platform.
         </p>
-        <Link
-          className="heroButton"
-          to="user/cellar"
-          onClick={() => {
-            dispatch(setCellarItems([]));
-          }}
-        >
+        <Link className="heroButton" to="user/cellar">
           Get Started ➡
         </Link>
       </div>
