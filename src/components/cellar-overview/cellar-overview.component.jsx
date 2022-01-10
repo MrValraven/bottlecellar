@@ -137,8 +137,11 @@ const CellarOverview = () => {
   }, [searchInput]);
 
   useEffect(() => {
-    const items = sortItemsBySortingOption(sortingOption, cellarItems);
+    let items = sortItemsBySortingOption(sortingOption, cellarItems);
     setSearchInput("");
+    if (items === null) {
+      items = [];
+    }
     setSortedAndFilteredItems([...items]);
   }, [sortingOption]);
 
