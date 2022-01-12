@@ -1,6 +1,6 @@
 import React from "react";
 
-import "./notes-card.styles.scss";
+import "./NotesCard.style.scss";
 
 const NotesCard = ({ note, handleEdit, handleDelete }) => {
   return (

@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 
-import "./cellar-overview.styles.scss";
+import "./CellarOverview.style.scss";
 import wineBottle from "../../assets/wine-bottle.svg";
-import DefaultButton from "../default-button/default-button.component";
-import Modal from "../modal/modal.component";
-import CellarItemListView from "../cellar-item-list-view/cellar-item-list-view.component";
-import NoItemsCard from "../no-items-card/no-items-card.component";
+import DefaultButton from "../default-button/DefaultButton";
+import Modal from "../modal/Modal";
+import CellarItemListView from "../cellar-item-list-view/CellarItemListView";
+import NoItemsCard from "../no-items-card/NoItemsCard";
 
 const body = document.querySelector("body");
 

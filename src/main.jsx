@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
-import ErrorBoundary from "./components/error-boundary/error-boundary.component";
+import ErrorBoundary from "./components/error-boundary/ErrorBoundary";
 import "./index.scss";
 import App from "./App";
 

@@ -1,10 +1,10 @@
 import React from "react";
 import { Route } from "react-router-dom";
 
-import CellarOverview from "../../components/cellar-overview/cellar-overview.component";
-import CellarItemPage from "../cellarItemPage/cellarItemPage.component";
+import CellarOverview from "../../components/cellar-overview/CellarOverview";
+import CellarItemPage from "../cellarItemPage/CellarItemPage";
 
-import "./cellar.styles.scss";
+import "./CellarPage.style.scss";
 
 const CellarPage = ({ match }) => {
   return (

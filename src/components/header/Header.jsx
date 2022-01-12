@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-import "./header.styles.scss";
+import "./Header.style.scss";
 
 import logo from "../../assets/wine.svg";
 import user from "../../assets/user.svg";

@@ -1,8 +1,8 @@
 import React from "react";
 
-import "./modal.styles.scss";
+import "./Modal.style.scss";
 import logo from "../../assets/wine.svg";
-import ModalForm from "../modal-form/modal-form.component.jsx";
+import ModalForm from "../modal-form/ModalForm.jsx";
 
 const Modal = ({
   toggleModal,

@@ -1,8 +1,8 @@
 import React from "react";
 
-import "./no-items-card.styles.scss";
+import "./NoItemsCard.style.scss";
 
-import DefaultButton from "../default-button/default-button.component";
+import DefaultButton from "../default-button/DefaultButton";
 
 const NoItemsCard = ({
   icon,

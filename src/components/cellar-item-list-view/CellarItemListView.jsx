@@ -1,15 +1,15 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
 
-import "./cellar-item-list-view.styles.scss";
+import "./CellarItemListView.style.scss";
 import defaultWineImage from "../../assets/wine1.png";
 import logo from "../../assets/wine.svg";
 
 const CellarItemListView = ({ item, history, match }) => {
   const { name, brand, year, price, quantity, notes, rating } = item;
   const goToItemPage = () => {
-    const cellarItemName = item.id;
-    history.push(`${match.url}/${cellarItemName}`);
+    const cellarItemId = item.id;
+    history.push(`${match.url}/${cellarItemId}`);
   };
 
   return (

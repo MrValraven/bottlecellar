@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 import heroImage from "../../assets/wine3.png";
 
-import "./hero.styles.scss";
+import "./Hero.style.scss";
 
 const Hero = () => {
   return (

@@ -1,7 +1,7 @@
 import React from "react";
 
-import "./confirm-delete-modal.styles.scss";
-import DefaultButton from "../default-button/default-button.component";
+import "./DeleteConfirmationModal.style.scss";
+import DefaultButton from "../default-button/DefaultButton";
 import trashIcon from "../../assets/trash.svg";
 
 const ConfirmDeleteModal = ({ clickEvent, toggleModal }) => (

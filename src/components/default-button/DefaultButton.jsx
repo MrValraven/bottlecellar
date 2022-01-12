@@ -1,6 +1,6 @@
 import React from "react";
 
-import "./default-button.styles.scss";
+import "./DefaultButton.style.scss";
 
 const DefaultButton = ({
   additionalClass,

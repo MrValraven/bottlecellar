@@ -3,11 +3,11 @@ import { Switch, Route } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setCellarItems } from "./redux/cellar/cellar.actions";
 
-import Header from "./components/header/header.component";
-import Homepage from "./pages/homepage/homepage.component";
-import CellarPage from "./pages/cellarpage/cellar.component";
-import CellarItemPage from "./pages/cellarItemPage/cellarItemPage.component";
-import Footer from "./components/footer/footer.component";
+import Header from "./components/header/Header";
+import Homepage from "./pages/homepage/Homepage";
+import CellarPage from "./pages/cellarpage/CellarPage";
+import CellarItemPage from "./pages/cellarItemPage/CellarItemPage";
+import Footer from "./components/footer/Footer";
 
 import "./App.scss";
 

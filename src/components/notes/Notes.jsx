@@ -2,12 +2,12 @@ import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { setItemNotes } from "../../redux/cellar/cellar.actions";
 
-import "./notes.styles.scss";
+import "./Notes.style.scss";
 import noteIcon from "../../assets/note.svg";
 
-import DefaultButton from "../../components/default-button/default-button.component";
-import NotesCard from "../../components/notes-card/notes-card.component";
-import NoItemsCard from "../no-items-card/no-items-card.component";
+import DefaultButton from "../default-button/DefaultButton";
+import NotesCard from "../notes-card/NotesCard";
+import NoItemsCard from "../no-items-card/NoItemsCard";
 
 const Notes = ({ currentCellarItem }) => {
   const dispatch = useDispatch();

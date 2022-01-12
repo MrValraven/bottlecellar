@@ -4,11 +4,11 @@ import { withRouter } from "react-router-dom";
 
 import { setCellarItems } from "../../redux/cellar/cellar.actions";
 
-import "./demo-section.styles.scss";
+import "./DemoSection.style.scss";
 import setOfBottles from "../../assets/wine1.png";
 import emptyRack from "../../assets/rack.png";
 import MOCK_DATA from "../../static/mockData";
-import DefaultButton from "../default-button/default-button.component";
+import DefaultButton from "../default-button/DefaultButton";
 
 const DemoSection = ({ history }) => {
   const dispatch = useDispatch();

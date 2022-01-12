@@ -7,12 +7,12 @@ import {
   removeItem,
 } from "../../redux/cellar/cellar.actions";
 
-import "./cellar-item.styles.scss";
+import "./CellarItem.style.scss";
 
 import defaultWineImage from "../../assets/wine-details.png";
-import Modal from "../modal/modal.component";
-import DefaultButton from "../../components/default-button/default-button.component";
-import ConfirmDeleteModal from "../confirm-delete-modal/confirm-delete-modal.component";
+import Modal from "../modal/Modal";
+import DefaultButton from "../default-button/DefaultButton";
+import ConfirmDeleteModal from "../delete-confirmation-modal/DeleteConfirmationModal";
 
 const body = document.querySelector("body");
 

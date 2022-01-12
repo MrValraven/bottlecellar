@@ -2,10 +2,10 @@ import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { withRouter } from "react-router-dom";
 
-import "./cellarItemPage.styles.scss";
+import "./CellarItemPage.style.scss";
 
-import Notes from "../../components/notes/notes.component";
-import CellarItem from "../../components/cellar-item/cellar-item.component";
+import Notes from "../../components/notes/Notes";
+import CellarItem from "../../components/cellar-item/CellarItem";
 
 const CellarItemPage = ({ match }) => {
   const [isLoading, setIsLoading] = useState(false);
