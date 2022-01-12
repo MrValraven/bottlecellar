@@ -64,7 +64,8 @@
   }
 
   .cellar-container {
-    display: grid;
+    display: flex;
+    flex-direction: column;
   }
 }
 
