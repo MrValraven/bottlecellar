@@ -6,6 +6,7 @@ import {
   incrementItemQuantity,
   decrementItemQuantity,
   setItemNotes,
+  setCellarItems,
 } from "./cellar.utils";
 
 const INITIAL_STATE = {
@@ -17,7 +18,6 @@ const cellarReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case CellarActionTypes.ADD_ITEM:
       cellarItems = addItemToCellar(state.cellarItems, action.payload);
-      localStorage.setItem("cellarItems", JSON.stringify(cellarItems));
       return {
         ...state,
         cellarItems: cellarItems,
@@ -25,7 +25,6 @@ const cellarReducer = (state = INITIAL_STATE, action) => {
 
     case CellarActionTypes.REMOVE_ITEM:
       cellarItems = removeItemFromCellar(state.cellarItems, action.payload);
-      localStorage.setItem("cellarItems", JSON.stringify(cellarItems));
       return {
         ...state,
         cellarItems: cellarItems,
@@ -33,37 +32,33 @@ const cellarReducer = (state = INITIAL_STATE, action) => {
 
     case CellarActionTypes.EDIT_ITEM:
       cellarItems = editItemFromCellar(state.cellarItems, action.payload);
-      localStorage.setItem("cellarItems", JSON.stringify(cellarItems));
       return {
         ...state,
         cellarItems: cellarItems,
       };
     case CellarActionTypes.INCREMENT_ITEM_QUANTITY:
       cellarItems = incrementItemQuantity(state.cellarItems, action.payload);
-      localStorage.setItem("cellarItems", JSON.stringify(cellarItems));
       return {
         ...state,
         cellarItems: cellarItems,
       };
     case CellarActionTypes.DECREMENT_ITEM_QUANTITY:
       cellarItems = decrementItemQuantity(state.cellarItems, action.payload);
-      localStorage.setItem("cellarItems", JSON.stringify(cellarItems));
       return {
         ...state,
         cellarItems: cellarItems,
       };
     case CellarActionTypes.SET_ITEM_NOTES:
       cellarItems = setItemNotes(state.cellarItems, action.payload);
-      localStorage.setItem("cellarItems", JSON.stringify(cellarItems));
       return {
         ...state,
         cellarItems: cellarItems,
       };
     case CellarActionTypes.SET_CELLAR_ITEMS:
-      localStorage.setItem("cellarItems", JSON.stringify(action.payload));
+      cellarItems = setCellarItems(action.payload);
       return {
         ...state,
-        cellarItems: action.payload,
+        cellarItems: cellarItems,
       };
     default:
       return state;

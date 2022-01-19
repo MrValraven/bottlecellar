@@ -1,8 +1,10 @@
 import { v4 as uuidv4 } from "uuid";
 
 export const addItemToCellar = (cellarItems, itemToAdd) => {
+  let newCellarItems = cellarItems;
+
   if (cellarItems === null) {
-    cellarItems = [];
+    newCellarItems = [];
   }
   const isItemAlreadyInCellar = cellarItems.find(
     (item) =>
@@ -11,20 +13,25 @@ export const addItemToCellar = (cellarItems, itemToAdd) => {
       item.year === itemToAdd.year
   );
 
-  if (isItemAlreadyInCellar) {
-    //Throw error because item already exists in cellar
-    console.error("Item already exists");
-    return cellarItems;
+  if (!isItemAlreadyInCellar) {
+    newCellarItems = [
+      ...cellarItems,
+      { ...itemToAdd, id: uuidv4(), notes: [] },
+    ];
   }
 
-  return [...cellarItems, { ...itemToAdd, id: uuidv4(), notes: [] }];
+  localStorage.setItem("cellarItems", JSON.stringify(newCellarItems));
+
+  return newCellarItems;
 };
 
 export const editItemFromCellar = (cellarItems, itemToEdit) => {
+  let newCellarItems = cellarItems;
+
   const isItemInCellar = cellarItems.find((item) => item.id === itemToEdit.id);
 
   if (isItemInCellar) {
-    return cellarItems.map((cellarItem) =>
+    newCellarItems = cellarItems.map((cellarItem) =>
       cellarItem.id === itemToEdit.id
         ? {
             ...cellarItem,
@@ -37,30 +44,32 @@ export const editItemFromCellar = (cellarItems, itemToEdit) => {
           }
         : cellarItem
     );
+
+    localStorage.setItem("cellarItems", JSON.stringify(newCellarItems));
   }
 
-  console.error("Error, item not found");
+  return newCellarItems;
 };
 
 export const removeItemFromCellar = (cellarItems, itemToRemove) => {
-  const isItemInCellar = cellarItems.find(
-    (item) => item.id === itemToRemove.id
+  const newCellarItems = cellarItems.filter(
+    (item) => item.id !== itemToRemove.id
   );
 
-  if (isItemInCellar) {
-    return cellarItems.filter((item) => item.id !== itemToRemove.id);
-  }
+  localStorage.setItem("cellarItems", JSON.stringify(newCellarItems));
 
-  console.error("Error, item not found");
+  return newCellarItems;
 };
 
 export const incrementItemQuantity = (cellarItems, itemToModify) => {
+  let newCellarItems = cellarItems;
+
   const isItemInCellar = cellarItems.find(
     (item) => item.id === itemToModify.id
   );
 
   if (isItemInCellar) {
-    return cellarItems.map((cellarItem) =>
+    newCellarItems = cellarItems.map((cellarItem) =>
       cellarItem.id === itemToModify.id
         ? {
             ...cellarItem,
@@ -68,21 +77,25 @@ export const incrementItemQuantity = (cellarItems, itemToModify) => {
           }
         : cellarItem
     );
+
+    localStorage.setItem("cellarItems", JSON.stringify(newCellarItems));
   }
 
-  console.error("Item not found");
+  return newCellarItems;
 };
 export const decrementItemQuantity = (cellarItems, itemToModify) => {
+  let newCellarItems = cellarItems;
+
   const isItemInCellar = cellarItems.find(
     (item) => item.id === itemToModify.id
   );
 
   if (isItemInCellar.quantity === 0) {
-    return cellarItems;
+    return newCellarItems;
   }
 
   if (isItemInCellar) {
-    return cellarItems.map((cellarItem) =>
+    newCellarItems = cellarItems.map((cellarItem) =>
       cellarItem.id === itemToModify.id
         ? {
             ...cellarItem,
@@ -90,18 +103,22 @@ export const decrementItemQuantity = (cellarItems, itemToModify) => {
           }
         : cellarItem
     );
+
+    localStorage.setItem("cellarItems", JSON.stringify(newCellarItems));
   }
 
-  console.error("Item not found");
+  return newCellarItems;
 };
 
 export const setItemNotes = (cellarItems, itemToModify) => {
+  let newCellarItems = cellarItems;
+
   const isItemInCellar = cellarItems.find(
     (item) => item.id === itemToModify.id
   );
 
   if (isItemInCellar) {
-    return cellarItems.map((cellarItem) =>
+    newCellarItems = cellarItems.map((cellarItem) =>
       cellarItem.id === itemToModify.id
         ? {
             ...cellarItem,
@@ -109,7 +126,15 @@ export const setItemNotes = (cellarItems, itemToModify) => {
           }
         : cellarItem
     );
+
+    localStorage.setItem("cellarItems", JSON.stringify(newCellarItems));
   }
 
-  console.error("Item not found");
+  return newCellarItems;
+};
+
+export const setCellarItems = (cellarItems) => {
+  localStorage.setItem("cellarItems", JSON.stringify(cellarItems));
+
+  return cellarItems;
 };
