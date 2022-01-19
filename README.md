@@ -57,30 +57,30 @@ Hot reloading is enabled by default for both **JavaScript** and **SCSS** files.
 │
 └── src                                           # Application source code
     ├── assets                                    # asset files to be required
-    ├── index.js                                  # Application bootstrap and rendering
+    ├── main.js                                  # Application bootstrap and rendering
     │
     ├── components                                # Global reusable components
     │   └── component-name
-    │       ├── component-name.styles.scss        # Your component styles 
-    │       ├── component-name.component.jsx      # Pure component source code
+    │       ├── ComponentName.style.scss          # Component styles 
+    │       ├── ComponentName.jsx                 # Component source code
     │
     ├── pages                                     # Components that represent each available routes
     │   └── component-name
-    │       ├── component-name.styles.scss        # Your component styles
-    │       ├── component-name.component.jsx      # Pure Component source code
+    │       ├── ComponentName.style.scss          # Component styles
+    │       ├── ComponentName.jsx                 # Component source code
     │
     ├── static                   
-    │      └── mockData.js                         # Constant with mock data for Redux
+    │      └── mockData.js                        # Constant with mock data for Redux
     │
     ├── redux
     │   ├── cellar
-    │   │     ├─cellar.actions.js                  # Reducer actions
-    │   │     ├─cellar.reducer.js                  # Reducer source code
-    │   │     ├─cellar.types.js                    # Constants of available action types
-    │   │     └─cellar.utils.js                    # Utility functions for said reducer
+    │   │     ├─cellar.actions.js                 # Reducer actions
+    │   │     ├─cellar.reducer.js                 # Reducer source code
+    │   │     ├─cellar.types.js                   # Constants of available action types
+    │   │     └─cellar.utils.js                   # Utility functions for said reducer
     │   │
-    │   ├── root-reducer.js                        # Combine all reducers in one place
-    │   └── store.js                               # Redux store bootstrap
+    │   ├── root-reducer.js                       # Combine all reducers in one place
+    │   └── store.js                              # Redux store bootstrap
     │
  ___├
  │
